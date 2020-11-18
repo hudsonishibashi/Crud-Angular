@@ -1,0 +1,28 @@
+<div>
+    <h1 class="title">Cadastrar cliente</h1>
+</div>
+<div>
+<form class="example-form" [formGroup]="clientForm">
+    <mat-form-field class="example-full-width">
+        <mat-label>Nome do cliente</mat-label>
+        <input matInput formControlName="name" name="name">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Email do cliente</mat-label>
+        <input matInput placeholder="exemplo@exemplo.com" formControlName="email" name="email">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Telefone do cliente</mat-label>
+        <input matInput formControlName="phone" name="phone">
+    </mat-form-field>
+</form>
+</div>
+<div>
+    <button mat-raised-button class="button" [disabled]="!clientForm.valid" (click)="save()">Adicionar</button>
+    <button mat-stroked-button class="button-secondary" (click)="onBack()">Voltar</button>
+</div>
+<div *ngIf="createSuccess" class="message-success">
+    <h3>Cliente cadastrado com sucesso!</h3>
+</div>
