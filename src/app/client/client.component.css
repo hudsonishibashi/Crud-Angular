@@ -6,6 +6,11 @@ table {
   font-size: 14px;
   width: 100%;
 }
+.title {
+  color: brown;
+  font-size: 14px;
+  font-weight: bold;
+}
 .example-button-container button {
   display: flex;
   background-color: brown;
@@ -19,4 +24,9 @@ table {
 .mat-spinner {
   margin: auto;
   margin-top: 15%;
+}
+#button-edit {
+  background-color: brown;
+  color: white;
+  margin-right: 12px;
 }

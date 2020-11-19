@@ -29,6 +29,24 @@ export class ClientService {
     return this.http.post<any>(this.url, request, this.httpOptions);
   }
 
+  getClientId(id: any): Observable<IClient> {
+    const _url = `${this.url}/${id}`;
+    return this.http.get<IClient>(_url).pipe(
+      tap(data => console.log('All: ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  updateClient(id: any, request: any): Observable<IClient> {
+    const _url = `${this.url}/${id}`;
+    return this.http.put<IClient>(_url, request);
+  }
+
+  deleteClient(id: any): Observable<any> {
+    const _url = `${this.url}/${id}`;
+    return this.http.delete(_url);
+  }
+
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {
