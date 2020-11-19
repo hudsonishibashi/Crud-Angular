@@ -17,6 +17,9 @@ table {
   color: white;
   margin-left: 87%;
   margin-bottom: 16px;
+  width: 13%;
+  text-align: center;
+  justify-content: center;
 }
 .uploader-status ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
   stroke: brown;

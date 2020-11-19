@@ -9,6 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { CreateClientComponent } from './create-client/create-client.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,6 +36,7 @@ import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.componen
         CommonModule,
         MatProgressSpinnerModule,
         MatDialogModule,
+        MatPaginatorModule,
         ClientRoutingModule
     ]
 })

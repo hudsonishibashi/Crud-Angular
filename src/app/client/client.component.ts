@@ -1,9 +1,10 @@
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 import { ClientService } from './client.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { ResponseIClient } from './client';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-client',
@@ -17,6 +18,8 @@ export class ClientComponent implements OnInit {
   dataSource: any;
   next: boolean = false;
   previous: boolean = false;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   
   constructor(private clientService: ClientService, public dialog: MatDialog) { }
 
@@ -26,6 +29,7 @@ export class ClientComponent implements OnInit {
         this.dataSource = new MatTableDataSource(clients.content);
         this.responseIClients = clients
         this.previous = true;
+        this.dataSource.paginator = this.paginator;
       },
       error: err => this.erroMessage = err
     });
@@ -41,6 +45,10 @@ export class ClientComponent implements OnInit {
     dialogRef.afterClosed().subscribe(res => {
       console.log('Dialog fechado!');
     });
+  }
+
+  reload() {
+    window.location.reload();
   }
 
 }

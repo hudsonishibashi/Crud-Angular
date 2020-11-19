@@ -36,6 +36,7 @@ export class UpdateClientComponent implements OnInit {
     })
     this.clientForm.reset();
     this.createSuccess = true;
+    this.router.navigate(['client']);
   }
 
   onBack(): void {
