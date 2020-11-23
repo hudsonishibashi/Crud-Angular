@@ -1,6 +1,6 @@
-import { ClientService } from './../client.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ClientService } from '../client.service';
 
 @Component({
   selector: 'app-dialog-confirm',
@@ -9,11 +9,16 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DialogConfirmComponent implements OnInit {
   id: any;
+  title: string = '';
+  subTitle: string = '';
 
   constructor(private clienteService: ClientService,
     public dialogRef: MatDialogRef<DialogConfirmComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-    ) { }
+    ) { 
+      this.title = data.title;
+      this.subTitle = data.subTitle;
+    }
 
   ngOnInit(): void {
   }

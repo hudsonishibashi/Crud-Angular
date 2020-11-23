@@ -1,10 +1,10 @@
-import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 import { ClientService } from './client.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { ResponseIClient } from './client';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 
 @Component({
   selector: 'app-client',
@@ -41,7 +41,11 @@ export class ClientComponent implements OnInit {
   }
 
   openDialog(id:any) {
-    const dialogRef = this.dialog.open(DialogConfirmComponent, {data: {id: id}});
+    const dialogRef = this.dialog.open(DialogConfirmComponent, {
+      data: {id: id, 
+      title: 'Deseja realmente excluir?', 
+      subTitle: 'Está ação não poderá ser revertida.',
+      }});
     dialogRef.afterClosed().subscribe(res => {
       console.log('Dialog fechado!');
     });

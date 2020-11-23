@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { UpdateClientComponent } from './update-client/update-client.component';
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 
+
 @NgModule({
     declarations: [
         ClientComponent,
