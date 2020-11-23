@@ -1,3 +1,4 @@
+import { CategoryModule } from './category/category.module';
 import { MatInputModule } from '@angular/material/input';
 import { ClientModule } from './client/client.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,16 +13,18 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CategoryComponent } from './category/category.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     MatToolbarModule,
     ClientModule,
+    CategoryModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,

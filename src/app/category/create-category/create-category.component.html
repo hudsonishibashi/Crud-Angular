@@ -1,0 +1,19 @@
+<div>
+    <h1 class="title">Cadastrar categoria</h1>
+</div>
+<div>
+<form class="example-form" [formGroup]="categoryForm">
+    <mat-form-field class="example-full-width">
+        <mat-label>Nome da categoria</mat-label>
+        <input matInput formControlName="name" name="name">
+    </mat-form-field>
+</form>
+</div>
+<div>
+    <button mat-raised-button class="button" [disabled]="!categoryForm.valid" (click)="save()">Cadastrar</button>
+    <button mat-stroked-button class="button-secondary" (click)="onBack()">Voltar</button>
+</div>
+<div *ngIf="createSuccess" class="message-success">
+    <h3>Categoria cadastrada com sucesso!</h3>
+</div>
+
