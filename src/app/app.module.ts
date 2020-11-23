@@ -1,3 +1,5 @@
+import { NotificationService } from './notification.service';
+import { ProductModule } from './product/product.module';
 import { CategoryModule } from './category/category.module';
 import { MatInputModule } from '@angular/material/input';
 import { ClientModule } from './client/client.module';
@@ -14,6 +16,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoryComponent } from './category/category.component';
+import { ProductComponent } from './product/product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +28,7 @@ import { CategoryComponent } from './category/category.component';
     MatToolbarModule,
     ClientModule,
     CategoryModule,
+    ProductModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
@@ -33,6 +37,7 @@ import { CategoryComponent } from './category/category.component';
     MatFormFieldModule,
     AppRoutingModule
   ],
+  providers: [NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

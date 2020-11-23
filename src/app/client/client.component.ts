@@ -1,3 +1,4 @@
+import { NotificationService } from './../notification.service';
 import { ClientService } from './client.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
@@ -21,7 +22,7 @@ export class ClientComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   
-  constructor(private clientService: ClientService, public dialog: MatDialog) { }
+  constructor(private clientService: ClientService, private notifcation: NotificationService) { }
 
   ngOnInit(): void {
     this.clientService.getClient().subscribe({
@@ -41,18 +42,15 @@ export class ClientComponent implements OnInit {
   }
 
   openDialog(id:any) {
-    const dialogRef = this.dialog.open(DialogConfirmComponent, {
-      data: {id: id, 
-      title: 'Deseja realmente excluir?', 
-      subTitle: 'Está ação não poderá ser revertida.',
-      }});
-    dialogRef.afterClosed().subscribe(res => {
-      console.log('Dialog fechado!');
-    });
+    this.notifcation.openDialog(id, 'Deseja realmente excluir?', 'Está ação não poderá ser revertida.', this, () => {this.deleteCliente(id)});
   }
 
   reload() {
     window.location.reload();
+  }
+
+  deleteCliente(id: any) {
+    this.clientService.deleteClient(id).subscribe(res => {});
   }
 
 }

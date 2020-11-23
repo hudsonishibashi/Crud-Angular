@@ -1,0 +1,35 @@
+/* Structure */
+table {
+    width: 100%;
+  }
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  .title {
+    color: brown;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .example-button-container button {
+    display: flex;
+    background-color: brown;
+    color: white;
+    margin-left: 87%;
+    margin-bottom: 16px;
+    width: 13%;
+    text-align: center;
+    justify-content: center;
+  }
+  .uploader-status ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: brown;
+  }
+  .mat-spinner {
+    margin: auto;
+    margin-top: 15%;
+  }
+  #button-edit {
+    background-color: brown;
+    color: white;
+    margin-right: 12px;
+  }

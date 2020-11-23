@@ -23,9 +23,8 @@ export class DialogConfirmComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteClient() {
-    this.clienteService.deleteClient(this.data.id).subscribe(res => {});
-    this.dialogRef.close();
+  closeModal(result: boolean) {
+    this.dialogRef.close(result);
   }
 
 }
