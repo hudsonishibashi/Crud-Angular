@@ -1,3 +1,4 @@
+import { SaleModule } from './sale/sale.module';
 import { NotificationService } from './notification.service';
 import { ProductModule } from './product/product.module';
 import { CategoryModule } from './category/category.module';
@@ -16,6 +17,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,12 +31,14 @@ import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.componen
     ClientModule,
     CategoryModule,
     ProductModule,
+    SaleModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatCardModule,
     AppRoutingModule
   ],
   providers: [NotificationService],

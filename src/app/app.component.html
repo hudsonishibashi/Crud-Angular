@@ -2,10 +2,10 @@
     <mat-toolbar-row>
       <span [routerLink]="['/home']">CRUD - frontend</span>
       <div class="example-button-row">
-        <a id="primary-button" mat-button [routerLink]="['/client']">Cliente</a>
-        <a mat-button routerLink=".">Venda</a>
-        <a mat-button [routerLink]="['/product']">Produto</a>
-        <a mat-button [routerLink]="['/category']">Categoria</a>
+        <a id="primary-button" mat-button [routerLink]="['/client']" routerLinkActive="active">Cliente</a>
+        <a mat-button [routerLink]="['/sale']"  routerLinkActive="active">Venda</a>
+        <a mat-button [routerLink]="['/product']"  routerLinkActive="active">Produto</a>
+        <a mat-button [routerLink]="['/category']"  routerLinkActive="active">Categoria</a>
       </div>
       <span class="example-spacer"></span>
     </mat-toolbar-row>
