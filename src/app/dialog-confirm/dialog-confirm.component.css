@@ -1,3 +1,6 @@
+.dialog {
+    padding-top: 24px;
+}
 #button-confirm {
     background-color: brown;
     color: white;

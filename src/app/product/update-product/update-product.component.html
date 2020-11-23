@@ -1,0 +1,33 @@
+<div>
+    <h1 class="title">Editar produto</h1>
+</div>
+<div>
+<form class="example-form" *ngIf="productForm" [formGroup]="productForm">
+    <mat-form-field class="example-full-width">
+        <mat-label>Nome do produto</mat-label>
+        <input matInput formControlName="name" name="name">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Quantidade</mat-label>
+        <input matInput formControlName="amount" name="amount">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Valor</mat-label>
+        <input matInput formControlName="value" name="value">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Categoria</mat-label>
+        <mat-select formControlName="category">
+            <mat-option *ngFor="let category of responseICategory.content" [value]="category.id">{{ category.name }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
+</div>
+<div>
+    <button mat-raised-button class="button" (click)="save()">Salvar</button>
+    <button mat-stroked-button class="button-secondary" (click)="onBack()">Voltar</button>
+</div>
+<div *ngIf="createSuccess" class="message-success">
+    <h3>Cliente atualizado com sucesso!</h3>
+</div>
+

@@ -1,3 +1,4 @@
+import { NotificationService } from './../notification.service';
 import { ProductService } from './product.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -19,7 +20,7 @@ export class ProductComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private notification: NotificationService) { }
 
   ngOnInit(): void {
     this.getProduct();
@@ -44,6 +45,20 @@ export class ProductComponent implements OnInit {
 
   reload() {
     window.location.reload();
+  }
+
+  openDialog(id:any) {
+    this.notification.openDialog(
+      id, 
+      'Deseja realmente excluir?', 
+      'Está ação não poderá ser revertida.', 
+      this, 
+      () => {this.deleteProduct(id)}
+      );
+  }
+
+  deleteProduct(id: any) {
+    this.productService.deleteProduct(id).subscribe(res => {});
   }
 
 }

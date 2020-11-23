@@ -14,13 +14,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ProductComponent } from './product.component';
 import { CreateProductComponent } from './create-product/create-product.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
 
 
 
 @NgModule({
   declarations: [
     ProductComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    UpdateProductComponent
   ],
   imports: [
     MatTableModule,

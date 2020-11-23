@@ -3,9 +3,7 @@ import { ClientService } from './client.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { ResponseIClient } from './client';
-import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
-import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 
 @Component({
   selector: 'app-client',
@@ -42,7 +40,13 @@ export class ClientComponent implements OnInit {
   }
 
   openDialog(id:any) {
-    this.notifcation.openDialog(id, 'Deseja realmente excluir?', 'Está ação não poderá ser revertida.', this, () => {this.deleteCliente(id)});
+    this.notifcation.openDialog(
+      id, 
+      'Deseja realmente excluir?', 
+      'Está ação não poderá ser revertida.', 
+      this, 
+      () => {this.deleteCliente(id)}
+      );
   }
 
   reload() {

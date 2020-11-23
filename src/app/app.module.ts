@@ -15,12 +15,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CategoryComponent } from './category/category.component';
-import { ProductComponent } from './product/product.component';
+import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    DialogConfirmComponent
   ],
   imports: [
     BrowserModule,

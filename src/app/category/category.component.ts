@@ -1,3 +1,4 @@
+import { NotificationService } from './../notification.service';
 import { CategoryService } from './category.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -19,7 +20,7 @@ export class CategoryComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService, private notification: NotificationService) { }
 
   ngOnInit(): void {
     this.getCategory();
@@ -44,6 +45,19 @@ export class CategoryComponent implements OnInit {
 
   reload() {
     window.location.reload();
+  }
+
+  openDialog(id:any) {
+    this.notification.openDialog(
+    id,
+    'Deseja realmente excluir?',
+    'Está ação não poderá ser revertida.', 
+    this,
+    () => {this.deleteCategory(id)});
+  }
+
+  deleteCategory(id: any) {
+    this.categoryService.deleteCategory(id).subscribe(res => {});
   }
 
 }

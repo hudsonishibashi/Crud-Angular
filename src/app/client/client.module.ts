@@ -15,15 +15,13 @@ import { CreateClientComponent } from './create-client/create-client.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UpdateClientComponent } from './update-client/update-client.component';
-import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 
 
 @NgModule({
     declarations: [
         ClientComponent,
         CreateClientComponent,
-        UpdateClientComponent,
-        DialogConfirmComponent
+        UpdateClientComponent
     ],
     imports: [
         MatTableModule,

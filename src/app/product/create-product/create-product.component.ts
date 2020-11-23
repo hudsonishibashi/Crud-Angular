@@ -1,3 +1,4 @@
+import { CategoryService } from './../../category/category.service';
 import { ProductService } from './../product.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,6 +18,7 @@ export class CreateProductComponent implements OnInit {
   
   constructor(private fb: FormBuilder, 
     private productService: ProductService,
+    private categoryService: CategoryService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -32,7 +34,7 @@ export class CreateProductComponent implements OnInit {
   }
 
   getCategory() {
-    this.productService.getCategory().subscribe({
+    this.categoryService.getCategory().subscribe({
       next: category => {
         this.responseICategory = category
       }
