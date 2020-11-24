@@ -10,11 +10,18 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SaleRoutingModule } from './sale-routing.module';
+
+import { SaleComponent } from './sale.component';
+import { CreateSaleComponent } from './create-sale/create-sale.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    SaleComponent,
+    CreateSaleComponent
+  ],
   imports: [
     MatTableModule,
     MatFormFieldModule,
@@ -28,6 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatProgressSpinnerModule,
     MatDialogModule,
     MatPaginatorModule,
+    SaleRoutingModule,
   ]
 })
 export class SaleModule { }

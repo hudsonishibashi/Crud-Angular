@@ -1,10 +1,16 @@
-export interface IProduct {
+export interface SaleHasProduct {
+    idSale: number;
+    idProduct: number;
+    qtdProduct: number;
+}
+
+export interface ISale {
     id: number;
-    name: string;
-    amount: number;
-    value: number;
-    category: number;
-    categoryName: string;
+    totalValue: number;
+    data: any;
+    idClient: number;
+    clientName: string;
+    saleHasProducts: SaleHasProduct[];
 }
 
 export interface Sort {
@@ -28,25 +34,22 @@ export interface Sort2 {
     empty: boolean;
 }
 
-export interface IResponseProduct {
-    content: IProduct[];
+export interface IResponseSale {
+    content: ISale[];
     pageable: Pageable;
-    totalElements: number;
     totalPages: number;
     last: boolean;
+    totalElements: number;
     size: number;
     number: number;
     sort: Sort2;
-    numberOfElements: number;
     first: boolean;
+    numberOfElements: number;
     empty: boolean;
 }
 
-export interface ICreateProduct {
-    name: string;
-    amount: number;
-    value: number;
-    category: number;
-    saleHasProducts: any[];
+export interface ICreateSale {
+    totalValue: number;
+    idClient: number;
+    saleHasProducts: SaleHasProduct[];
 }
-

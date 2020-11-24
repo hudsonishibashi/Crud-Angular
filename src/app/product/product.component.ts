@@ -1,3 +1,4 @@
+import { CategoryService } from './../category/category.service';
 import { NotificationService } from './../notification.service';
 import { ProductService } from './product.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -17,10 +18,15 @@ export class ProductComponent implements OnInit {
   dataSource: any;
   next: boolean = false;
   previous: boolean = false;
+  categoryName!: string;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private productService: ProductService, private notification: NotificationService) { }
+  constructor(
+    private productService: ProductService, 
+    private categoryService: CategoryService,
+    private notification: NotificationService
+    ) { }
 
   ngOnInit(): void {
     this.getProduct();
@@ -33,9 +39,22 @@ export class ProductComponent implements OnInit {
         this.responseProduct = product
         this.previous = true;
         this.dataSource.paginator = this.paginator;
+        product.content.map(res => {
+           this.getCategoryId(res.category).then(name => {
+           res.categoryName = name;
+         });
+        })
       },
       error: err => this.erroMessage = err
     });
+  }
+
+  async getCategoryId(id: number): Promise<string> {
+    return new Promise(resolve => {
+      this.categoryService.getCategoryId(id).subscribe(res => {
+      resolve(res.name);
+      })
+    })
   }
 
   applyFilter(event: Event) {

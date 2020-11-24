@@ -1,0 +1,49 @@
+<div>
+    <h1 class="title">Cadastrar venda</h1>
+</div>
+<div>
+    <form class="example-form" [formGroup]="saleForm">
+        <mat-form-field class="example-full-width">
+            <mat-label>Valor total</mat-label>
+            <input matInput formControlName="totalValue" name="totalValue">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Cliente</mat-label>
+            <mat-select formControlName="idClient">
+                <mat-option *ngFor="let client of responseClient?.content" [value]="client.id">{{ client.name }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+        <div formArrayName="saleHasProducts" class="example-full-width-product">
+            <div *ngFor="let shp of saleFormArray.controls; let idx = index" [formGroupName]="idx">
+                <mat-form-field>
+                    <mat-label>Produto</mat-label>
+                    <mat-select formControlName="idProduct">
+                        <mat-option *ngFor="let product of responseProduct?.content" [value]="product.id">{{product.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="form-product">
+                    <mat-label>Quantidade Produto</mat-label>
+                    <input matInput formControlName="qtdProduct" name="qtdProduct">
+                </mat-form-field>
+
+                <button mat-mini-fab class="button-delete" (click)="deleteSaleHasProduct(idx)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>   
+    </form>
+</div>
+<div>
+    <button mat-raised-button class="button" (click)="addSaleHasProduct()">Adicionar produto</button>
+</div>
+<div>
+    <button mat-raised-button class="button" [disabled]="!saleForm.valid" (click)="save()">Cadastrar</button>
+    <button mat-stroked-button class="button-secondary" (click)="onBack()">Voltar</button>
+</div>
+<div *ngIf="createSuccess" class="message-success">
+    <h3>Produto cadastrado com sucesso!</h3>
+</div>
+
+
+

@@ -1,0 +1,43 @@
+.title {
+    padding-top: 12px;
+    text-align: center;
+    color: brown;
+    font-size: 36px;
+    font-weight: bolder;
+}
+.example-form {
+    width: 100%;
+}
+.example-full-width {
+    width: 100%;
+    padding-top: 16px;
+}
+.example-full-width-product {
+    padding-top: 16px;
+}
+.button {
+    margin-top: 24px;
+    background: brown;
+    color: white;
+}
+.button-secondary {
+    margin-left: 24px;
+    border-color: brown;
+    color: brown;
+}
+.message-success {
+    margin-top: 90px;
+    text-align: center;
+}
+.message-success h3{
+    font-size: 32px;
+    color: green;
+}
+.form-product {
+    padding-left: 32px;
+}
+.button-delete {
+    margin-left: 20px;
+    background: brown;
+    color: white;
+}
