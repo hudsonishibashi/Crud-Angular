@@ -1,0 +1,46 @@
+<div>
+    <h1 class="title-details">Detalhes da venda</h1>
+    <button mat-raised-button class="button" (click)="onBack()">Voltar</button>
+</div>
+<mat-card>
+    <div>
+        <mat-label class="title-label">Id da venda: </mat-label>
+        <a>{{idSale}}</a>
+        <br>
+        <br>
+        <mat-label  class="title-label">Nome do cliente: </mat-label>
+        <a>{{nameClient}}</a>
+    </div>
+</mat-card>
+<div>
+    <h2 class="title-details-second">Produtos:</h2>
+</div>
+<div class="uploader-status">
+    <mat-spinner *ngIf="!previous"></mat-spinner>
+    </div>
+    <div  class="mat-elevation-z8">
+      <table mat-table *ngIf="previous" [dataSource]="dataSource">
+    
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="title"> Nome </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef class="title"> Quantidade </th>
+          <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="value">
+          <th mat-header-cell *matHeaderCellDef class="title"> Valor </th>
+          <td mat-cell *matCellDef="let element"> {{element.value | currency:'BRL' : 'symbol' : '1.2-2'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef class="title"> Categoria </th>
+          <td mat-cell *matCellDef="let element"> {{element.categoryName}} </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>

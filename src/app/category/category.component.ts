@@ -50,7 +50,7 @@ export class CategoryComponent implements OnInit {
   openDialog(id:any) {
     this.notification.openDialog(
     id,
-    'Deseja realmente excluir?',
+    'Deseja realmente excluir essa categoria?',
     'Está ação não poderá ser revertida.', 
     this,
     () => {this.deleteCategory(id)});

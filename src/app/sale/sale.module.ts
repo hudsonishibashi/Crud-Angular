@@ -11,16 +11,21 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SaleRoutingModule } from './sale-routing.module';
+import {MatCardModule} from '@angular/material/card';
 
 import { SaleComponent } from './sale.component';
 import { CreateSaleComponent } from './create-sale/create-sale.component';
+import { UpdateSaleComponent } from './update-sale/update-sale.component';
+import { DetailSaleComponent } from './detail-sale/detail-sale.component';
 
 
 
 @NgModule({
   declarations: [
     SaleComponent,
-    CreateSaleComponent
+    CreateSaleComponent,
+    UpdateSaleComponent,
+    DetailSaleComponent
   ],
   imports: [
     MatTableModule,
@@ -35,6 +40,7 @@ import { CreateSaleComponent } from './create-sale/create-sale.component';
     MatProgressSpinnerModule,
     MatDialogModule,
     MatPaginatorModule,
+    MatCardModule,
     SaleRoutingModule,
   ]
 })

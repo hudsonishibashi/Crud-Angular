@@ -26,7 +26,10 @@ export class ClientService {
   }
 
   createClient(request: any): Observable<CreateIClient> {
-    return this.http.post<any>(this.url, request, this.httpOptions);
+    return this.http.post<any>(this.url, request, this.httpOptions).pipe(
+      tap(data => console.log('All: ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
   }
 
   getClientId(id: any): Observable<IClient> {
@@ -39,20 +42,26 @@ export class ClientService {
 
   updateClient(id: any, request: any): Observable<IClient> {
     const _url = `${this.url}/${id}`;
-    return this.http.put<IClient>(_url, request);
+    return this.http.put<IClient>(_url, request).pipe(
+      tap(data => console.log('All: ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
   }
 
   deleteClient(id: any): Observable<any> {
     const _url = `${this.url}/${id}`;
-    return this.http.delete(_url);
+    return this.http.delete(_url).pipe(
+      tap(data => console.log('All: ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
   }
 
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {
-        errorMessage = 'An error ocurred: ${err.error.message}';
+        errorMessage = `An error ocurred: ${err.error.message}`;
     } else {
-        errorMessage = 'Server returned code: ${err.status}, error message is: ${err.message}';
+        errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
     }
     console.log(errorMessage);
     return throwError(errorMessage);

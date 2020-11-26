@@ -42,7 +42,7 @@ export class ClientComponent implements OnInit {
   openDialog(id:any) {
     this.notifcation.openDialog(
       id, 
-      'Deseja realmente excluir?', 
+      'Deseja realmente excluir esse cliente?', 
       'Está ação não poderá ser revertida.', 
       this, 
       () => {this.deleteCliente(id)}

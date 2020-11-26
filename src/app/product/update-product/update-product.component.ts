@@ -34,7 +34,7 @@ export class UpdateProductComponent implements OnInit {
         name: `${res.name}`,
         amount: `${res.amount}`,
         value: `${res.value}`,
-        category: `${res.category}`,
+        category: res.category,
       })
     })
     this.createSuccess = false;

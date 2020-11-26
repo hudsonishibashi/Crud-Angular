@@ -1,5 +1,5 @@
+import { NotificationService } from './../notification.service';
 import { ClientService } from './../client/client.service';
-import { IClient } from './../client/client';
 import { SaleService } from './sale.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -23,7 +23,10 @@ export class SaleComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private saleService: SaleService, private clientService: ClientService) { }
+  constructor(
+    private saleService: SaleService, 
+    private clientService: ClientService,
+    private notification: NotificationService) { }
 
   ngOnInit(): void {
     this.getSale();
@@ -61,6 +64,20 @@ export class SaleComponent implements OnInit {
 
   reload() {
     window.location.reload();
+  }
+
+  openDialog(id:any) {
+    this.notification.openDialog(
+      id, 
+      'Deseja realmente excluir essa venda?', 
+      'Está ação não poderá ser revertida.', 
+      this, 
+      () => {this.deleteSale(id)}
+      );
+  }
+
+  deleteSale(id: any) {
+    this.saleService.deleteSale(id).subscribe(res => {});
   }
 
 }
