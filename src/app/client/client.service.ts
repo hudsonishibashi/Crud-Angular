@@ -9,6 +9,7 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class ClientService {
   private url = 'http://localhost:8080/api/client';
+  private urlLogin = 'http://localhost:8080/api/client/login';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -51,6 +52,13 @@ export class ClientService {
   deleteClient(id: any): Observable<any> {
     const _url = `${this.url}/${id}`;
     return this.http.delete(_url).pipe(
+      tap(data => console.log('All: ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  verifyLoginClient(request: any): Observable<boolean> {
+    return this.http.post<any>(this.urlLogin, request, this.httpOptions).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );

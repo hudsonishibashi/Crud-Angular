@@ -10,6 +10,11 @@
 #primary-button {
     margin-left: 60px;
 }
+#ultimate-button {
+  margin-left: 240%;
+  background: white;
+  color: #a52a2a;
+}
 .example-button-row button,
 .example-button-row a {
   margin-right: 8px;

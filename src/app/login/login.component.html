@@ -1,0 +1,25 @@
+<div class="image">
+    <img mat-card-image src="/assets/images/opus.png">
+</div>
+<div>
+    <h1 class="title">Login</h1>
+</div>
+<div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>E-mail</mat-label>
+      <input matInput placeholder="exemplo@exemplo.com" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input matInput [formControl]="password" [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+  </div>
+  <div class="example-container">
+    <button mat-raised-button class="button" (click)="login()">Entrar</button>
+  </div>

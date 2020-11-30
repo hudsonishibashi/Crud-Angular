@@ -3,6 +3,8 @@ export interface IClient {
   name: string;
   phone: string;
   email: string;
+  password: string;
+  admin: boolean;
 }
 
 export interface Sort {
@@ -44,4 +46,9 @@ export interface CreateIClient {
   name: string;
   phone: string;
   email: string;
+}
+
+export interface ILoginClient {
+  email: string;
+  password: string;
 }

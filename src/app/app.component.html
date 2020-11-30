@@ -1,4 +1,4 @@
-<mat-toolbar class="toolbar">
+<mat-toolbar class="toolbar" *ngIf="viewMenu">
     <mat-toolbar-row>
       <span [routerLink]="['/home']">CRUD - frontend</span>
       <div class="example-button-row">
@@ -6,6 +6,7 @@
         <a mat-button [routerLink]="['/sale']"  routerLinkActive="active">Venda</a>
         <a mat-button [routerLink]="['/product']"  routerLinkActive="active">Produto</a>
         <a mat-button [routerLink]="['/category']"  routerLinkActive="active">Categoria</a>
+        <a mat-button id="ultimate-button" (click)="logout()">Sair</a>
       </div>
       <span class="example-spacer"></span>
     </mat-toolbar-row>
