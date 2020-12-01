@@ -3,6 +3,7 @@ import { ClientService } from './../client.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IAdmin } from '../admin';
 
 @Component({
   selector: 'app-create-client',
@@ -14,6 +15,10 @@ export class CreateClientComponent implements OnInit, ICanDeactivate {
   createSuccess!: boolean;
   buttonDisabled!: any;
   private modifyForm:boolean = false;
+  listTypeUser: IAdmin[] = [
+    {isAdmin: true, name: 'Sim'}, 
+    {isAdmin: false, name: 'Não'}
+  ];
 
   constructor(private fb: FormBuilder, 
     private clientService: ClientService,
@@ -25,6 +30,8 @@ export class CreateClientComponent implements OnInit, ICanDeactivate {
       name: ['', [Validators.required]],
       phone: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+      admin: [false, [Validators.required]],
     });
     this.createSuccess = false;
     this.buttonDisabled = false;

@@ -4,18 +4,29 @@
 <div>
 <form class="example-form" [formGroup]="clientForm">
     <mat-form-field class="example-full-width">
-        <mat-label>Nome do cliente</mat-label>
+        <mat-label>Nome</mat-label>
         <input matInput formControlName="name" name="name" (input)="input()">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-        <mat-label>Email do cliente</mat-label>
+        <mat-label>Email</mat-label>
         <input matInput placeholder="exemplo@exemplo.com" formControlName="email" name="email" (input)="input()">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-        <mat-label>Telefone do cliente</mat-label>
+        <mat-label>Telefone</mat-label>
         <input matInput formControlName="phone" name="phone" (input)="input()">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Senha</mat-label>
+        <input matInput formControlName="password" name="password" (input)="input()">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Administrador</mat-label>
+        <mat-select formControlName="admin" (selectionChange)="input()">
+            <mat-option *ngFor="let list of listTypeUser" [value]="list.isAdmin">{{ list.name }}</mat-option>
+        </mat-select>
     </mat-form-field>
 </form>
 </div>
