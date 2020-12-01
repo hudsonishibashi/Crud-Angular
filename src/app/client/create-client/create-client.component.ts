@@ -1,3 +1,4 @@
+import { ICanDeactivate } from './../../guards/candeactivate';
 import { ClientService } from './../client.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -8,10 +9,11 @@ import { Router } from '@angular/router';
   templateUrl: './create-client.component.html',
   styleUrls: ['./create-client.component.css']
 })
-export class CreateClientComponent implements OnInit {
+export class CreateClientComponent implements OnInit, ICanDeactivate {
   clientForm!: FormGroup;
   createSuccess!: boolean;
   buttonDisabled!: any;
+  private modifyForm:boolean = false;
 
   constructor(private fb: FormBuilder, 
     private clientService: ClientService,
@@ -34,11 +36,32 @@ export class CreateClientComponent implements OnInit {
     });
     this.clientForm.reset();
     this.createSuccess = true;
+    this.modifyForm = false;
     //window.location.reload();
   }
 
   onBack(): void {
     this.router.navigate(['client']);
+  }
+
+  input() {
+    this.modifyForm = true;
+  }
+
+  modifyTrueRouter() {
+    let verify: boolean = true;
+    if (this.modifyForm) {
+      if (confirm('Tem certeza que deseja sair da página? Os dados serão perdidos.')){
+        verify = true
+      } else {
+        verify = false;
+      }
+    }
+    return verify;
+  }
+
+  isDisabled(): boolean {
+    return this.modifyTrueRouter();
   }
 
 }

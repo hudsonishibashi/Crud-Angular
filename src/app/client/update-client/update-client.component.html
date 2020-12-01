@@ -5,17 +5,17 @@
 <form class="example-form" *ngIf="clientForm" [formGroup]="clientForm">
     <mat-form-field class="example-full-width">
         <mat-label>Nome do cliente</mat-label>
-        <input matInput formControlName="name" name="name">
+        <input matInput formControlName="name" name="name" (input)="input()">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
         <mat-label>Email do cliente</mat-label>
-        <input matInput placeholder="exemplo@exemplo.com" formControlName="email" name="email">
+        <input matInput placeholder="exemplo@exemplo.com" formControlName="email" name="email" (input)="input()">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
         <mat-label>Telefone do cliente</mat-label>
-        <input matInput formControlName="phone" name="phone">
+        <input matInput formControlName="phone" name="phone" (input)="input()">
     </mat-form-field>
 </form>
 </div>

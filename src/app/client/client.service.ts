@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
-import { ResponseIClient, CreateIClient, IClient } from './client';
+import { ResponseIClient, CreateIClient, IClient, IResponseLoginClient } from './client';
 import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -57,7 +57,7 @@ export class ClientService {
     );
   }
 
-  verifyLoginClient(request: any): Observable<boolean> {
+  verifyLoginClient(request: any): Observable<IResponseLoginClient> {
     return this.http.post<any>(this.urlLogin, request, this.httpOptions).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)

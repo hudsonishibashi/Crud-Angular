@@ -1,3 +1,4 @@
+import { ICanDeactivate } from './../../guards/candeactivate';
 import { CategoryService } from './../../category/category.service';
 import { ProductService } from './../product.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,11 +11,12 @@ import { ResponseICategory } from 'src/app/category/category';
   templateUrl: './update-product.component.html',
   styleUrls: ['./update-product.component.css']
 })
-export class UpdateProductComponent implements OnInit {
+export class UpdateProductComponent implements OnInit, ICanDeactivate {
   productForm!: FormGroup;
   createSuccess!: boolean;
   id: any;
   responseICategory!: ResponseICategory;
+  private modifyForm:boolean = false;
   
   constructor(private fb: FormBuilder, 
     private productService: ProductService,
@@ -53,10 +55,31 @@ export class UpdateProductComponent implements OnInit {
     })
     this.productForm.reset();
     this.createSuccess = true;
+    this.modifyForm = false;
     this.router.navigate(['product']);
   }
 
   onBack(): void {
     this.router.navigate(['product']);
+  }
+
+  input() {
+    this.modifyForm = true;
+  }
+
+  modifyTrueRouter() {
+    let verify: boolean = true;
+    if (this.modifyForm) {
+      if (confirm('Tem certeza que deseja sair da página? As alterações serão perdidas.')){
+        verify = true
+      } else {
+        verify = false;
+      }
+    }
+    return verify;
+  }
+
+  isDisabled(): boolean {
+    return this.modifyTrueRouter();
   }
 }

@@ -1,3 +1,4 @@
+import { DeactivateGuard } from './../guards/deactivate.guard';
 import { ClientRoutingModule } from './cliente-routing.module';
 import { ClientComponent } from './client.component';
 import { NgModule } from '@angular/core';
@@ -37,6 +38,9 @@ import { UpdateClientComponent } from './update-client/update-client.component';
         MatDialogModule,
         MatPaginatorModule,
         ClientRoutingModule
+    ],
+    providers: [
+        DeactivateGuard
     ]
 })
 

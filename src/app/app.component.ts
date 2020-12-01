@@ -1,3 +1,4 @@
+import { NotificationService } from './notification.service';
 import { AuthService } from './login/auth.service';
 import { Component } from '@angular/core';
 import { ILoginClient } from './client/client';
@@ -12,8 +13,12 @@ export class AppComponent {
 
   viewMenu: boolean = false;
   currentUser!: ILoginClient;
+  userDisplayName: any;
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private notification: NotificationService
+    ) {
   }
 
   ngOnInit() {
@@ -23,14 +28,26 @@ export class AppComponent {
   checkLoginUser() {
     this.authService.menuEmitter.subscribe(
       (mostrar: boolean) => {
+        this.userDisplayName = localStorage.getItem('loggedUser');
         return this.viewMenu = mostrar;
       }
     );
     if (localStorage.getItem('currentUser')) {
       this.viewMenu = true;
+      this.userDisplayName = localStorage.getItem('loggedUser');
     } else {
       this.viewMenu = false;
     }
+  }
+
+  openDialog() {
+    this.notification.openDialog(
+      0,
+      'Deseja realmente sair?', 
+      '', 
+      this, 
+      () => {this.logout()}
+      );
   }
 
   logout() {

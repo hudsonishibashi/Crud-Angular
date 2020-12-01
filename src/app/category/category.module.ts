@@ -1,3 +1,4 @@
+import { DeactivateGuard } from './../guards/deactivate.guard';
 import { CategoryRoutingModule } from './category-routing.module';
 import { CategoryComponent } from './category.component';
 import { NgModule } from '@angular/core';
@@ -37,6 +38,9 @@ import { UpdateCategoryComponent } from './update-category/update-category.compo
         MatDialogModule,
         MatPaginatorModule,
         CategoryRoutingModule
+    ],
+    providers: [
+        DeactivateGuard
     ]
 })
 

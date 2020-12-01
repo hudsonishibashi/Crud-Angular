@@ -1,3 +1,4 @@
+import { DeactivateGuard } from './../guards/deactivate.guard';
 import { CategoryComponent } from './category.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -7,8 +8,12 @@ import { UpdateCategoryComponent } from './update-category/update-category.compo
 const routes: Routes = [
 
   { path: 'category', component: CategoryComponent},
-  { path: 'createCategory', component: CreateCategoryComponent},
-  { path: 'updateCategory/:id', component: UpdateCategoryComponent}
+  { path: 'createCategory', component: CreateCategoryComponent, 
+    canDeactivate: [DeactivateGuard]
+  },
+  { path: 'updateCategory/:id', component: UpdateCategoryComponent,
+    canDeactivate: [DeactivateGuard]
+  }
 ];
 
 @NgModule({

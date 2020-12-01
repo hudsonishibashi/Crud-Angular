@@ -1,3 +1,4 @@
+import { ICanDeactivate } from './../../guards/candeactivate';
 import { ResponseIClient } from 'src/app/client/client';
 import { ClientService } from './../../client/client.service';
 import { SaleService } from './../sale.service';
@@ -14,7 +15,7 @@ import { element } from 'protractor';
   templateUrl: './update-sale.component.html',
   styleUrls: ['./update-sale.component.css']
 })
-export class UpdateSaleComponent implements OnInit {
+export class UpdateSaleComponent implements OnInit, ICanDeactivate {
   saleForm!: FormGroup;
   createSuccess!: boolean;
   id: any;
@@ -22,6 +23,7 @@ export class UpdateSaleComponent implements OnInit {
   responseIProduct!: IResponseProduct;
   idProduct!: number;
   qtdProduct!:number;
+  private modifyForm:boolean = false;
   
   constructor(
     private fb: FormBuilder,
@@ -94,11 +96,32 @@ export class UpdateSaleComponent implements OnInit {
     this.saleService.updateSale(this.id, this.saleForm.value).subscribe(res => {})
     this.saleForm.reset();
     this.createSuccess = true;
+    this.modifyForm = false;
     this.router.navigate(['sale']);
   }
 
   onBack(): void {
     this.router.navigate(['sale']);
+  }
+
+  input() {
+    this.modifyForm = true;
+  }
+
+  modifyTrueRouter() {
+    let verify: boolean = true;
+    if (this.modifyForm) {
+      if (confirm('Tem certeza que deseja sair da página? Os dados serão perdidos.')){
+        verify = true
+      } else {
+        verify = false;
+      }
+    }
+    return verify;
+  }
+
+  isDisabled(): boolean {
+    return this.modifyTrueRouter();
   }
 
 }

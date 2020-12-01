@@ -5,19 +5,19 @@
 <form class="example-form" [formGroup]="productForm">
     <mat-form-field class="example-full-width">
         <mat-label>Nome do produto</mat-label>
-        <input matInput formControlName="name" name="name">
+        <input matInput formControlName="name" name="name" (input)="input()">
     </mat-form-field>
     <mat-form-field class="example-full-width">
         <mat-label>Quantidade</mat-label>
-        <input matInput formControlName="amount" name="amount">
+        <input matInput formControlName="amount" name="amount" (input)="input()">
     </mat-form-field>
     <mat-form-field class="example-full-width">
         <mat-label>Valor</mat-label>
-        <input matInput formControlName="value" name="value">
+        <input matInput formControlName="value" name="value" (input)="input()">
     </mat-form-field>
     <mat-form-field class="example-full-width">
         <mat-label>Categoria</mat-label>
-        <mat-select formControlName="category">
+        <mat-select formControlName="category" (selectionChange)="input()">
             <mat-option *ngFor="let category of responseICategory?.content" [value]="category.id">{{ category.name }}</mat-option>
         </mat-select>
     </mat-form-field>

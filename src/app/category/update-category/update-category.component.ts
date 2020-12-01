@@ -1,3 +1,4 @@
+import { ICanDeactivate } from './../../guards/candeactivate';
 import { CategoryService } from './../category.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -8,10 +9,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './update-category.component.html',
   styleUrls: ['./update-category.component.css']
 })
-export class UpdateCategoryComponent implements OnInit {
+export class UpdateCategoryComponent implements OnInit, ICanDeactivate {
   categoryForm!: FormGroup;
   createSuccess!: boolean;
   id: any;
+  private modifyForm:boolean = false;
   
   constructor(private fb: FormBuilder, 
     private categoryService: CategoryService,
@@ -38,11 +40,32 @@ export class UpdateCategoryComponent implements OnInit {
     })
     this.categoryForm.reset();
     this.createSuccess = true;
+    this.modifyForm = false;
     this.router.navigate(['category']);
   }
 
   onBack(): void {
     this.router.navigate(['category']);
+  }
+
+  input() {
+    this.modifyForm = true;
+  }
+
+  modifyTrueRouter() {
+    let verify: boolean = true;
+    if (this.modifyForm) {
+      if (confirm('Tem certeza que deseja sair da página? As alterações serão perdidas.')){
+        verify = true
+      } else {
+        verify = false;
+      }
+    }
+    return verify;
+  }
+
+  isDisabled(): boolean {
+    return this.modifyTrueRouter();
   }
 
 }

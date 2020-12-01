@@ -5,11 +5,11 @@
     <form class="example-form" [formGroup]="saleForm">
         <mat-form-field class="example-full-width">
             <mat-label>Valor total</mat-label>
-            <input matInput formControlName="totalValue" name="totalValue">
+            <input matInput formControlName="totalValue" name="totalValue" (input)="input()">
         </mat-form-field>
         <mat-form-field class="example-full-width">
             <mat-label>Cliente</mat-label>
-            <mat-select formControlName="idClient">
+            <mat-select formControlName="idClient" (selectionChange)="input()">
                 <mat-option *ngFor="let client of responseClient?.content" [value]="client.id">{{ client.name }}</mat-option>
             </mat-select>
         </mat-form-field>
@@ -18,13 +18,13 @@
             <div *ngFor="let shp of saleFormArray.controls; let idx = index" [formGroupName]="idx">
                 <mat-form-field>
                     <mat-label>Produto</mat-label>
-                    <mat-select formControlName="idProduct">
+                    <mat-select formControlName="idProduct" (selectionChange)="input()">
                         <mat-option *ngFor="let product of responseProduct?.content" [value]="product.id">{{product.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="form-product">
                     <mat-label>Quantidade Produto</mat-label>
-                    <input matInput formControlName="qtdProduct" name="qtdProduct">
+                    <input matInput formControlName="qtdProduct" name="qtdProduct" (input)="input()">
                 </mat-form-field>
 
                 <button mat-mini-fab class="button-delete" (click)="deleteSaleHasProduct(idx)">

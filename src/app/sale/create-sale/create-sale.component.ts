@@ -1,3 +1,4 @@
+import { ICanDeactivate } from './../../guards/candeactivate';
 import { SaleService } from './../sale.service';
 import { ClientService } from './../../client/client.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,13 +14,14 @@ import { SaleHasProduct } from '../sale';
   templateUrl: './create-sale.component.html',
   styleUrls: ['./create-sale.component.css']
 })
-export class CreateSaleComponent implements OnInit {
+export class CreateSaleComponent implements OnInit, ICanDeactivate {
   saleForm!: FormGroup;
   createSuccess!: boolean;
   buttonDisabled!: any;
   responseClient!: ResponseIClient;
   responseProduct!: IResponseProduct;
   shp!: SaleHasProduct;
+  private modifyForm:boolean = false;
   
   constructor(private fb: FormBuilder,
     private saleService: SaleService, 
@@ -74,10 +76,31 @@ export class CreateSaleComponent implements OnInit {
     });
     this.saleForm.reset();
     this.createSuccess = true;
+    this.modifyForm = false;
   }
 
   onBack(): void {
     this.router.navigate(['sale']);
+  }
+
+  input() {
+    this.modifyForm = true;
+  }
+
+  modifyTrueRouter() {
+    let verify: boolean = true;
+    if (this.modifyForm) {
+      if (confirm('Tem certeza que deseja sair da página? Os dados serão perdidos.')){
+        verify = true
+      } else {
+        verify = false;
+      }
+    }
+    return verify;
+  }
+
+  isDisabled(): boolean {
+    return this.modifyTrueRouter();
   }
 
 }

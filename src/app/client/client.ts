@@ -46,9 +46,17 @@ export interface CreateIClient {
   name: string;
   phone: string;
   email: string;
+  password: string;
+  admin: boolean;
 }
-
 export interface ILoginClient {
   email: string;
   password: string;
+}
+
+export interface IResponseLoginClient {
+  id: number;
+  name: string;
+  email: string;
+  admin: boolean;
 }

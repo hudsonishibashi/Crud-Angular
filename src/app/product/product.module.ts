@@ -1,3 +1,4 @@
+import { DeactivateGuard } from './../guards/deactivate.guard';
 import { ProductRoutingModule } from './product-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -38,6 +39,9 @@ import { UpdateProductComponent } from './update-product/update-product.componen
     MatDialogModule,
     MatPaginatorModule,
     ProductRoutingModule,
+  ],
+  providers: [
+    DeactivateGuard
   ]
 })
 export class ProductModule { }

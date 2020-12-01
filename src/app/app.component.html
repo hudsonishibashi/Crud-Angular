@@ -6,7 +6,10 @@
         <a mat-button [routerLink]="['/sale']"  routerLinkActive="active">Venda</a>
         <a mat-button [routerLink]="['/product']"  routerLinkActive="active">Produto</a>
         <a mat-button [routerLink]="['/category']"  routerLinkActive="active">Categoria</a>
-        <a mat-button id="ultimate-button" (click)="logout()">Sair</a>
+        <a id="user-display"> Olá, {{ userDisplayName | slice:0:15 }}{{ userDisplayName.length > 15 ? '...': ''}} </a>
+        <button mat-icon-button id="ultimate-button" (click)="openDialog()">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
       </div>
       <span class="example-spacer"></span>
     </mat-toolbar-row>

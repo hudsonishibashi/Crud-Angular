@@ -5,7 +5,7 @@
 <form class="example-form" [formGroup]="categoryForm">
     <mat-form-field class="example-full-width">
         <mat-label>Nome da categoria</mat-label>
-        <input matInput formControlName="name" name="name">
+        <input matInput formControlName="name" name="name" (input)="input()">
     </mat-form-field>
 </form>
 </div>

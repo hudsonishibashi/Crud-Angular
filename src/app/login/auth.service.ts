@@ -1,7 +1,7 @@
 import { ClientService } from 'src/app/client/client.service';
 import { Router } from '@angular/router';
 import { EventEmitter, Injectable } from '@angular/core';
-import { ILoginClient } from '../client/client';
+import { ILoginClient, IResponseLoginClient } from '../client/client';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class AuthService {
   private userAuth: boolean = false;
   menuEmitter = new EventEmitter<boolean>();
   client!: ILoginClient;
-  exists: boolean = false;
+  loggedClient!: IResponseLoginClient;
 
   constructor(
     private router: Router,
@@ -20,10 +20,11 @@ export class AuthService {
   login(email: string, password: string) {
     this.client = {email: email, password: password};
     this.clientService.verifyLoginClient(this.client).subscribe(response => {
-      this.exists = response;
-      if (this.exists == true) {
+      this.loggedClient = response;
+      if (this.loggedClient != null) {
         this.userAuth = true;
         localStorage.setItem('currentUser', JSON.stringify(this.client));
+        localStorage.setItem('loggedUser', this.loggedClient.name)
         this.menuEmitter.emit(true);
         this.router.navigate(['home']);
       } else {
@@ -33,12 +34,9 @@ export class AuthService {
     });
   }
 
-  userIsAuth() {
-    return this.userAuth;
-  }
-
   logout() {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('loggedUser');
     this.router.navigate(['login']);
   }
 }

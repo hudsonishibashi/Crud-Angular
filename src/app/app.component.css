@@ -10,10 +10,19 @@
 #primary-button {
     margin-left: 60px;
 }
+#user-display {
+  margin-left: 55%;
+  position: fixed;
+  margin-right: 5%;
+  margin-top: 5px;
+  font-size: 14px;
+  text-align: center;
+}
 #ultimate-button {
-  margin-left: 240%;
-  background: white;
-  color: #a52a2a;
+  margin-left: 65%;
+  width: 60px;
+  position: fixed;
+  color: white;
 }
 .example-button-row button,
 .example-button-row a {
