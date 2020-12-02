@@ -54,4 +54,8 @@ export class AppComponent {
     this.authService.logout();
     this.viewMenu = false;
   }
+
+  getShortName(fullName: string) { 
+    return fullName.split(' ');
+  }
 }

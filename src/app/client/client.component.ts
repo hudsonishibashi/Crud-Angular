@@ -11,7 +11,7 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'email', 'phone', 'action'];
+  displayedColumns: string[] = ['name', 'email', 'phone', 'admin', 'action'];
   responseIClients!: ResponseIClient;
   erroMessage: string = '';
   dataSource: any;

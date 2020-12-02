@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClientService } from '../client.service';
+import { IAdmin } from '../admin';
 
 @Component({
   selector: 'app-update-client',
@@ -14,6 +15,10 @@ export class UpdateClientComponent implements OnInit, ICanDeactivate {
   createSuccess!: boolean;
   id: any;
   private modifyForm:boolean = false;
+  listTypeUser: IAdmin[] = [
+    {isAdmin: true, name: 'Sim'}, 
+    {isAdmin: false, name: 'Não'}
+  ];
 
   constructor(private fb: FormBuilder, 
     private clientService: ClientService,
@@ -28,6 +33,8 @@ export class UpdateClientComponent implements OnInit, ICanDeactivate {
         name: `${res.name}`,
         phone: `${res.phone}`,
         email: `${res.email}`,
+        password: `${res.password}`,
+        admin: res.admin
       })
     })
     this.createSuccess = false;

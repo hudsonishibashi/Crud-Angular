@@ -1,3 +1,4 @@
+import { ShortNamePipe } from './shared/short-name.pipe';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './login/auth.service';
 import { SaleModule } from './sale/sale.module';
@@ -27,7 +28,8 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     HomeComponent,
     DialogConfirmComponent,
-    LoginComponent
+    LoginComponent,
+    ShortNamePipe
   ],
   imports: [
     BrowserModule,
