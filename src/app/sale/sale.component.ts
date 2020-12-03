@@ -71,6 +71,7 @@ export class SaleComponent implements OnInit {
       id, 
       'Deseja realmente excluir essa venda?', 
       'Está ação não poderá ser revertida.', 
+      true,
       this, 
       () => {this.deleteSale(id)}
       );

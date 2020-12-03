@@ -70,7 +70,8 @@ export class ProductComponent implements OnInit {
     this.notification.openDialog(
       id, 
       'Deseja realmente excluir esse produto?', 
-      'Está ação não poderá ser revertida.', 
+      'Está ação não poderá ser revertida.',
+      true, 
       this, 
       () => {this.deleteProduct(id)}
       );

@@ -10,6 +10,7 @@ export class DialogConfirmComponent implements OnInit {
   id: any;
   title: string = '';
   subTitle: string = '';
+  buttonCloseDisabled: boolean = true;
 
   constructor(
     public dialogRef: MatDialogRef<DialogConfirmComponent>,
@@ -17,6 +18,7 @@ export class DialogConfirmComponent implements OnInit {
     ) { 
       this.title = data.title;
       this.subTitle = data.subTitle;
+      this.buttonCloseDisabled = data.buttonCloseDisabled;
     }
 
   ngOnInit(): void {

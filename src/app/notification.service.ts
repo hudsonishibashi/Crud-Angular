@@ -10,12 +10,13 @@ export class NotificationService {
 
   constructor(public dialog: MatDialog) { }
 
-  openDialog(id:any, message: string, subTitle: string, context?: any, confirmAction?: () => void) {
+  openDialog(id:any, message: string, subTitle: string, buttonCloseDisabled?: boolean, context?: any, confirmAction?: () => void) {
     const dialogRef = this.dialog.open(DialogConfirmComponent, {
       data: {
       id: id, 
       title: message, 
-      subTitle: subTitle
+      subTitle: subTitle,
+      buttonCloseDisabled: buttonCloseDisabled
       }});
     dialogRef.afterClosed().subscribe(res => {
       if (res && confirmAction && context) confirmAction.call(context);

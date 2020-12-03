@@ -46,7 +46,8 @@ export class AppComponent {
     this.notification.openDialog(
       0,
       'Deseja realmente sair?', 
-      '', 
+      '',
+      true, 
       this, 
       () => {this.logout()}
       );

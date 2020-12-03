@@ -52,6 +52,7 @@ export class CategoryComponent implements OnInit {
     id,
     'Deseja realmente excluir essa categoria?',
     'Está ação não poderá ser revertida.', 
+    true,
     this,
     () => {this.deleteCategory(id)});
   }
