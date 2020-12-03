@@ -3,7 +3,7 @@ import { ClientService } from './../client.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IAdmin } from '../admin';
+import { IAdmin } from '../models/admin';
 
 @Component({
   selector: 'app-create-client',

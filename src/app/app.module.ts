@@ -1,3 +1,4 @@
+import { CommonUserModule } from './common-user/common-user.module';
 import { ShortNamePipe } from './shared/short-name.pipe';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './login/auth.service';
@@ -23,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 import {MatCardModule} from '@angular/material/card';
 import { LoginComponent } from './login/login.component';
+import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +41,8 @@ import { LoginComponent } from './login/login.component';
     CategoryModule,
     ProductModule,
     SaleModule,
+    CommonUserModule,
+    ShoppingCartModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,

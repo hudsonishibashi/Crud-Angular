@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
-import { ResponseIClient, CreateIClient, IClient, IResponseLoginClient } from './client';
+import { ResponseIClient, CreateIClient, IClient, IResponseLoginClient } from './models/client';
 import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({

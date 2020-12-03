@@ -1,5 +1,5 @@
 import { AuthService } from './auth.service';
-import { IClient } from './../client/client';
+import { IClient } from '../client/models/client';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required])
   hide = true;
+  messageCredentials!: string;
 
   user!: IClient;
 
@@ -31,7 +32,16 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authService.login(this.email.value, this.password.value);   
+    this.authService.login(this.email.value, this.password.value); 
+    this.userCredentials();  
+  }
+
+  userCredentials() {
+    this.authService.messageCredentialEmmilter.subscribe(
+      (message: string) => {
+        this.messageCredentials = message;
+      }
+    );
   }
 
 }

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClientService } from '../client.service';
-import { IAdmin } from '../admin';
+import { IAdmin } from '../models/admin';
 
 @Component({
   selector: 'app-update-client',

@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/product/product.service';
-import { ResponseIClient } from 'src/app/client/client';
+import { ResponseIClient } from 'src/app/client/models/client';
 import { IResponseProduct } from 'src/app/product/product';
 import { SaleHasProduct } from '../sale';
 

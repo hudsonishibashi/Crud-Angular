@@ -1,0 +1,29 @@
+.mat-tab-group {
+    margin-bottom: 48px;
+  }
+.mat-tab {
+    color: brown;
+}
+.title {
+    margin-top: 8%;
+    text-align: center;
+    color: brown;
+    font-size: 50px;
+}
+.mat-card {
+    margin-top: 5%;
+    max-width: 100%;
+    justify-content: center;
+}
+.example-card {
+    max-width: 350px;
+}
+.inline-block {
+    display: block;
+    float: left;
+    margin-right: 8px;
+}
+.add-cart {
+    background: brown;
+    color: white;
+}  

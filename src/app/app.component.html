@@ -1,12 +1,16 @@
 <mat-toolbar class="toolbar" *ngIf="viewMenu">
     <mat-toolbar-row>
-      <span [routerLink]="['/home']">CRUD - frontend</span>
+      <span [routerLink]="['/home']" *ngIf="currentViewMenu">CRUD - frontend</span>
+      <span [routerLink]="['/common']" *ngIf="!currentViewMenu">CRUD - frontend</span>
       <div class="example-button-row">
-        <a id="primary-button" mat-button [routerLink]="['/client']" routerLinkActive="active">Cliente</a>
-        <a mat-button [routerLink]="['/sale']"  routerLinkActive="active">Venda</a>
-        <a mat-button [routerLink]="['/product']"  routerLinkActive="active">Produto</a>
-        <a mat-button [routerLink]="['/category']"  routerLinkActive="active">Categoria</a>
+        <a id="primary-button" mat-button [routerLink]="['/client']" routerLinkActive="active" *ngIf="currentViewMenu">Cliente</a>
+        <a mat-button [routerLink]="['/sale']"  routerLinkActive="active" *ngIf="currentViewMenu">Venda</a>
+        <a mat-button [routerLink]="['/product']"  routerLinkActive="active" *ngIf="currentViewMenu">Produto</a>
+        <a mat-button [routerLink]="['/category']"  routerLinkActive="active" *ngIf="currentViewMenu">Categoria</a>
         <!--<a id="user-display"> Olá, {{ userDisplayName | slice:0:15 }}{{ userDisplayName.length > 15 ? '...': ''}} </a>-->
+        <button mat-icon-button id="primary-button" routerLinkActive="active" *ngIf="!currentViewMenu" [routerLink]="['/cart']">
+          <mat-icon>shopping_cart</mat-icon>
+        </button>
         <a id="user-display"> Olá, {{ userDisplayName | shortName }} </a>
         <button mat-icon-button id="ultimate-button" (click)="openDialog()">
           <mat-icon>exit_to_app</mat-icon>

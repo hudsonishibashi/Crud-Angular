@@ -1,5 +1,5 @@
 import { ICanDeactivate } from './../../guards/candeactivate';
-import { ResponseIClient } from 'src/app/client/client';
+import { ResponseIClient } from 'src/app/client/models/client';
 import { ClientService } from './../../client/client.service';
 import { SaleService } from './../sale.service';
 import { Component, OnInit } from '@angular/core';

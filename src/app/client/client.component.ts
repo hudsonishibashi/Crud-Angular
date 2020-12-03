@@ -2,7 +2,7 @@ import { NotificationService } from './../notification.service';
 import { ClientService } from './client.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
-import { ResponseIClient } from './client';
+import { ResponseIClient } from './models/client';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({

@@ -1,7 +1,7 @@
 import { NotificationService } from './notification.service';
 import { AuthService } from './login/auth.service';
 import { Component } from '@angular/core';
-import { ILoginClient } from './client/client';
+import { ILoginClient } from './client/models/client';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +14,12 @@ export class AppComponent {
   viewMenu: boolean = false;
   currentUser!: ILoginClient;
   userDisplayName: any;
+  currentViewMenu: any;
 
   constructor(
     private authService: AuthService,
     private notification: NotificationService
-    ) {
-  }
+    ) {}
 
   ngOnInit() {
     this.checkLoginUser();
@@ -29,12 +29,14 @@ export class AppComponent {
     this.authService.menuEmitter.subscribe(
       (mostrar: boolean) => {
         this.userDisplayName = localStorage.getItem('loggedUser');
+        this.verifyUser();
         return this.viewMenu = mostrar;
       }
     );
     if (localStorage.getItem('currentUser')) {
       this.viewMenu = true;
       this.userDisplayName = localStorage.getItem('loggedUser');
+      this.verifyUser();
     } else {
       this.viewMenu = false;
     }
@@ -55,7 +57,12 @@ export class AppComponent {
     this.viewMenu = false;
   }
 
-  getShortName(fullName: string) { 
-    return fullName.split(' ');
+  verifyUser() {
+    const currentViewMenu = this.authService.currentUserValue;
+    if (currentViewMenu?.admin) {
+      this.currentViewMenu = true;
+    } else {
+      this.currentViewMenu = false;
+    }
   }
 }

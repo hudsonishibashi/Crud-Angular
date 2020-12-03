@@ -1,0 +1,22 @@
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Bebidas">
+        <div class="inline-block" *ngFor="let product of products">
+          <mat-card class="example-card" *ngIf="product.category === 2">
+            <!--<mat-card-header></mat-card-header> -->
+            <img mat-card-image src="/assets/images/opus.png" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p> Produto: {{product.name}} </p>
+              <p> Valor: {{product.value | currency:'BRL' : 'symbol' : '1.2-2'}} </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button class="add-cart">Adicionar no carrinho</button>
+            </mat-card-actions>
+        </mat-card>
+        </div>
+    </mat-tab>
+    <mat-tab label="Congelados">Content 2</mat-tab>
+    <mat-tab label="Docerias">Content 3</mat-tab>
+    <mat-tab label="Hortifrutis">Content 3</mat-tab>
+    <mat-tab label="Limpeza">Content 3</mat-tab>
+    <mat-tab label="Padaria">Content 3</mat-tab>
+  </mat-tab-group>

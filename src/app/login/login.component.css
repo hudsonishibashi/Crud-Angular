@@ -26,3 +26,7 @@
     width: 32%;
     margin-top: 32px;
   }
+  .message-error {
+    text-align: center;
+    color: red;
+  }

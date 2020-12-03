@@ -1,3 +1,5 @@
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { CommonUserComponent } from './common-user/common-user.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -9,10 +11,12 @@ import { SaleComponent } from './sale/sale.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  { path: 'client', component: ClientComponent, canActivate: [AuthGuard]},
-  { path: 'category', component: CategoryComponent, canActivate: [AuthGuard]},
-  { path: 'sale', component: SaleComponent, canActivate: [AuthGuard]},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard], data: {roles: [true]}},
+  { path: 'common', component: CommonUserComponent, canActivate: [AuthGuard], data: {roles: [false]}},
+  { path: 'client', component: ClientComponent, canActivate: [AuthGuard], data: {roles: [true]}},
+  { path: 'category', component: CategoryComponent, canActivate: [AuthGuard], data: {roles: [true]}},
+  { path: 'sale', component: SaleComponent, canActivate: [AuthGuard], data: {roles: [true]}},
+  { path: 'cart', component: ShoppingCartComponent, canActivate: [AuthGuard], data: {roles: [false]}},
   { path:'', redirectTo: 'home', pathMatch: 'full' }
 ];
 

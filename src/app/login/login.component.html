@@ -20,6 +20,9 @@
         </button>
       </mat-form-field>
   </div>
+  <div class="message-error">
+    <span *ngIf="messageCredentials">{{messageCredentials}}</span>
+  </div>
   <div class="example-container">
     <button mat-raised-button class="button" (click)="login()">Entrar</button>
   </div>

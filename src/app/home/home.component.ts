@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ILoginClient } from '../client/client';
+import { ILoginClient } from '../client/models/client';
 
 @Component({
   selector: 'app-home',
