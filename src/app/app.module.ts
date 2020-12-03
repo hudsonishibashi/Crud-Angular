@@ -1,3 +1,4 @@
+import { RegisterModule } from './register/register.module';
 import { CommonUserModule } from './common-user/common-user.module';
 import { ShortNamePipe } from './shared/short-name.pipe';
 import { AuthGuard } from './guards/auth.guard';
@@ -43,6 +44,7 @@ import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
     SaleModule,
     CommonUserModule,
     ShoppingCartModule,
+    RegisterModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,

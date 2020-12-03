@@ -8,9 +8,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClientComponent } from './client/client.component';
 import { CategoryComponent } from './category/category.component';
 import { SaleComponent } from './sale/sale.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard], data: {roles: [true]}},
   { path: 'common', component: CommonUserComponent, canActivate: [AuthGuard], data: {roles: [false]}},
   { path: 'client', component: ClientComponent, canActivate: [AuthGuard], data: {roles: [true]}},
