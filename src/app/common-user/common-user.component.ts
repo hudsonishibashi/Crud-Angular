@@ -1,6 +1,7 @@
 import { IProduct } from 'src/app/product/product';
 import { ProductService } from './../product/product.service';
 import { Component, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-common-user',
@@ -10,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class CommonUserComponent implements OnInit {
   products!: IProduct[];
   category!: number;
+  color: ThemePalette = 'warn';
 
   constructor(
     private productService: ProductService
@@ -22,9 +24,6 @@ export class CommonUserComponent implements OnInit {
   getProduct() {
     this.productService.getProduct().subscribe(res => {
       this.products = res.content;
-      this.products.map(category => {
-        this.category = category.category;
-      })
     })
   }
 

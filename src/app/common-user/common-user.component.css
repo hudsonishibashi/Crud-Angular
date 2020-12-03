@@ -22,8 +22,14 @@
     display: block;
     float: left;
     margin-right: 8px;
+    margin-top: 5%;
+    margin-bottom: 3px;
 }
 .add-cart {
     background: brown;
     color: white;
 }  
+.example-full-width {
+    width: 40%;
+    margin-left: 10%;
+}

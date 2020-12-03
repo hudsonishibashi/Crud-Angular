@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
 
 import { CommonUserComponent } from './common-user.component';
 
@@ -16,7 +17,8 @@ import { CommonUserComponent } from './common-user.component';
     CommonModule,
     MatCardModule,
     MatTabsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule
   ]
 })
 export class CommonUserModule { }
