@@ -15,7 +15,7 @@
 
     <mat-form-field class="example-full-width">
         <mat-label>Telefone</mat-label>
-        <input matInput formControlName="phone" name="phone" (input)="input()">
+        <input matInput placeholder="(00)00000-0000" formControlName="phone" name="phone" [textMask]="{mask: mask}" (input)="input()">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">

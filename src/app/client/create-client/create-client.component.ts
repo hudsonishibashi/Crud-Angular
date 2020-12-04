@@ -15,6 +15,8 @@ export class CreateClientComponent implements OnInit, ICanDeactivate {
   createSuccess!: boolean;
   buttonDisabled!: any;
   private modifyForm:boolean = false;
+  public mask = ['+', '5', '5', ' ', '(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+
   listTypeUser: IAdmin[] = [
     {isAdmin: true, name: 'Sim'}, 
     {isAdmin: false, name: 'Não'}

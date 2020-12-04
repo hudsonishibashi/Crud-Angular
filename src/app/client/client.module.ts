@@ -1,6 +1,5 @@
 import { DeactivateGuard } from './../guards/deactivate.guard';
 import { ClientRoutingModule } from './cliente-routing.module';
-import { ClientComponent } from './client.component';
 import { NgModule } from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -11,10 +10,12 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
-import { CreateClientComponent } from './create-client/create-client.component';
+import { TextMaskModule } from 'angular2-text-mask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
+import { ClientComponent } from './client.component';
+import { CreateClientComponent } from './create-client/create-client.component';
 import { UpdateClientComponent } from './update-client/update-client.component';
 
 
@@ -37,6 +38,7 @@ import { UpdateClientComponent } from './update-client/update-client.component';
         MatProgressSpinnerModule,
         MatDialogModule,
         MatPaginatorModule,
+        TextMaskModule,
         ClientRoutingModule
     ],
     providers: [

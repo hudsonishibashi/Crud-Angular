@@ -11,8 +11,12 @@
         <button mat-icon-button id="primary-button" routerLinkActive="active" *ngIf="!currentViewMenu" [routerLink]="['/cart']">
           <mat-icon>shopping_cart</mat-icon>
         </button>
-        <a id="user-display"> Olá, {{ userDisplayName | shortName }} </a>
-        <button mat-icon-button id="ultimate-button" (click)="openDialog()">
+        <a id="user-display" *ngIf="currentViewMenu"> Olá, {{ userDisplayName | shortName }} </a>
+        <button mat-icon-button id="ultimate-button" *ngIf="currentViewMenu" (click)="openDialog()">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+        <a id="common-user-display" *ngIf="!currentViewMenu"> Olá, {{ userDisplayName | shortName }} </a>
+        <button mat-icon-button id="common-ultimate-button" *ngIf="!currentViewMenu" (click)="openDialog()">
           <mat-icon>exit_to_app</mat-icon>
         </button>
       </div>

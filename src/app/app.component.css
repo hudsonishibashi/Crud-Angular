@@ -11,7 +11,7 @@
     margin-left: 60px;
 }
 #user-display {
-  margin-left: 58%;
+  margin-left: 48%;
   position: fixed;
   margin-right: 5%;
   margin-top: 5px;
@@ -19,7 +19,21 @@
   text-align: center;
 }
 #ultimate-button {
-  margin-left: 65%;
+  margin-left: 55%;
+  width: 60px;
+  position: fixed;
+  color: white;
+}
+#common-user-display {
+  margin-left: 68%;
+  position: fixed;
+  margin-right: 5%;
+  margin-top: 5px;
+  font-size: 14px;
+  text-align: center;
+}
+#common-ultimate-button {
+  margin-left: 75%;
   width: 60px;
   position: fixed;
   color: white;
