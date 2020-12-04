@@ -28,6 +28,7 @@ export class CreateProductComponent implements OnInit, ICanDeactivate {
       name: ['', [Validators.required]],
       amount: [,[Validators.required]],
       value: [,[Validators.required]],
+      image: ['', [Validators.required]],
       category: [,[Validators.required]]
     });
     this.getCategory();

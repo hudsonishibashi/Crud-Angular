@@ -3,10 +3,12 @@
         <div class="inline-block" *ngFor="let product of products">
           <mat-card class="example-card" *ngIf="product.category === 2">
             <!--<mat-card-header></mat-card-header> -->
-            <img mat-card-image src="/assets/images/opus.png" alt="Photo of a Shiba Inu">
+            <img mat-card-image src="/assets/images/products/bebidas/{{product.image}}" 
+              onerror="this.src='/assets/images/opus.png';" 
+              alt="Image Photo" width="350px" height="230px">
             <mat-card-content>
               <p> Produto: {{product.name}} </p>
-              <p> Valor: {{product.value | currency:'BRL' : 'symbol' : '1.2-2'}} </p>
+              <p> Valor por unidade: {{product.value | currency:'BRL' : 'symbol' : '1.2-2'}} </p>
             </mat-card-content>
             <mat-card-actions>
               <button mat-button class="add-cart">Adicionar no carrinho</button>
@@ -24,7 +26,7 @@
           <img mat-card-image src="/assets/images/opus.png" alt="Photo of a Shiba Inu">
           <mat-card-content>
             <p> Produto: {{product.name}} </p>
-            <p> Valor: {{product.value | currency:'BRL' : 'symbol' : '1.2-2'}} </p>
+            <p> Valor por unidade: {{product.value | currency:'BRL' : 'symbol' : '1.2-2'}}</p>
           </mat-card-content>
           <mat-card-actions>
             <button mat-button class="add-cart">Adicionar no carrinho</button>
@@ -39,10 +41,12 @@
     <mat-tab label="Docerias">
       <div class="inline-block" *ngFor="let product of products">
         <mat-card class="example-card" *ngIf="product.category === 6">
-          <img mat-card-image src="/assets/images/opus.png" alt="Photo of a Shiba Inu">
+          <img mat-card-image src="/assets/images/products/docerias/{{product.image}}" 
+              onerror="this.src='/assets/images/opus.png';" 
+              alt="Image Photo" width="350px" height="230px">
           <mat-card-content>
             <p> Produto: {{product.name}} </p>
-            <p> Valor: {{product.value | currency:'BRL' : 'symbol' : '1.2-2'}} </p>
+            <p> Valor por unidade: {{product.value | currency:'BRL' : 'symbol' : '1.2-2'}} </p>
           </mat-card-content>
           <mat-card-actions>
             <button mat-button class="add-cart">Adicionar no carrinho</button>
@@ -60,7 +64,7 @@
           <img mat-card-image src="/assets/images/opus.png" alt="Photo of a Shiba Inu">
           <mat-card-content>
             <p> Produto: {{product.name}} </p>
-            <p> Valor: {{product.value | currency:'BRL' : 'symbol' : '1.2-2'}} </p>
+            <p> Valor por unidade: {{product.value | currency:'BRL' : 'symbol' : '1.2-2'}} </p>
           </mat-card-content>
           <mat-card-actions>
             <button mat-button class="add-cart">Adicionar no carrinho</button>
@@ -78,7 +82,7 @@
           <img mat-card-image src="/assets/images/opus.png" alt="Photo of a Shiba Inu">
           <mat-card-content>
             <p> Produto: {{product.name}} </p>
-            <p> Valor: {{product.value | currency:'BRL' : 'symbol' : '1.2-2'}} </p>
+            <p> Valor por unidade: {{product.value | currency:'BRL' : 'symbol' : '1.2-2'}} </p>
           </mat-card-content>
           <mat-card-actions>
             <button mat-button class="add-cart">Adicionar no carrinho</button>
@@ -96,7 +100,7 @@
           <img mat-card-image src="/assets/images/opus.png" alt="Photo of a Shiba Inu">
           <mat-card-content>
             <p> Produto: {{product.name}} </p>
-            <p> Valor: {{product.value | currency:'BRL' : 'symbol' : '1.2-2'}} </p>
+            <p> Valor por unidade: {{product.value | currency:'BRL' : 'symbol' : '1.2-2'}} </p>
           </mat-card-content>
           <mat-card-actions>
             <button mat-button class="add-cart">Adicionar no carrinho</button>

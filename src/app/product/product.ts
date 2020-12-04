@@ -3,6 +3,7 @@ export interface IProduct {
     name: string;
     amount: number;
     value: number;
+    image: string;
     category: number;
     categoryName: string;
 }
@@ -46,6 +47,7 @@ export interface ICreateProduct {
     name: string;
     amount: number;
     value: number;
+    image: string;
     category: number;
     saleHasProducts: any[];
 }
