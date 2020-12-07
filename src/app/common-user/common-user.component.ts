@@ -1,7 +1,10 @@
+import { AuthService } from './../login/auth.service';
 import { IProduct } from 'src/app/product/product';
 import { ProductService } from './../product/product.service';
 import { Component, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+import { FormControl, Validators } from '@angular/forms';
+import { ICart } from './cart';
 
 @Component({
   selector: 'app-common-user',
@@ -12,19 +15,46 @@ export class CommonUserComponent implements OnInit {
   products!: IProduct[];
   category!: number;
   color: ThemePalette = 'warn';
+  amount = new FormControl(1, [Validators.min(1)]);
+  listCart: Array<ICart> = []
+  listFilter!: string;
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
+    const currentUser = this.authService.currentUserValue;
+    this.listCart = JSON.parse(localStorage.getItem(`addCart${currentUser?.id}`) || '{}');
     this.getProduct();
   }
 
   getProduct() {
     this.productService.getProduct().subscribe(res => {
       this.products = res.content;
-    })
+    });
   }
+
+  addCart(idProduct: any) {
+    const currentUser = this.authService.currentUserValue;
+    this.listCart.push({id: idProduct, amount: this.amount.value});
+    localStorage.setItem(`addCart${currentUser?.id}`, JSON.stringify(this.listCart));
+    //localStorage.removeItem('addCart');
+  }
+/*
+  get listFilterFuncition(): string {
+    return this.listFilter;
+  }
+  set listFilterFuncition(value:string) {
+    this.listFilter = value;
+    this.products = this.listFilter ? this.performFilter(this.listFilter) : this.products;
+  }
+
+  performFilter(filterBy: string): IProduct[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.products.filter((product: IProduct) => product.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
+}
+*/
 
 }

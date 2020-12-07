@@ -15,7 +15,7 @@
         <button mat-icon-button id="ultimate-button" *ngIf="currentViewMenu" (click)="openDialog()">
           <mat-icon>exit_to_app</mat-icon>
         </button>
-        <a id="common-user-display" *ngIf="!currentViewMenu"> Olá, {{ userDisplayName | shortName }} </a>
+        <span id="common-user-display" *ngIf="!currentViewMenu"> Olá, {{ userDisplayName | shortName }} </span>
         <button mat-icon-button id="common-ultimate-button" *ngIf="!currentViewMenu" (click)="openDialog()">
           <mat-icon>exit_to_app</mat-icon>
         </button>

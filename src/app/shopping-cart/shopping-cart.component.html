@@ -1,1 +1,26 @@
-<p>shopping-cart works!</p>
+<div class="example-button-container">
+    <h1 class="title">Carrinho de compras</h1>
+    <button mat-raised-button>Finalizar compra</button>
+</div>
+<div *ngIf="listCart" >
+    <div class="inline-block" *ngFor="let product of products">
+        <mat-card class="example-card">
+          <img mat-card-image src="/assets/images/{{product.categoryName}}/{{product.image}}" 
+            onerror="this.src='/assets/images/opus.png';" 
+            alt="Image Photo" width="350px" height="230px">
+          <mat-card-content>
+              <div class="info-product">
+                  <p><span class="red">Produto: </span> {{product.name}} </p>
+                  <p><span class="red">Valor por unidade: </span> {{product.value | currency:'BRL' : 'symbol' : '1.2-2'}} </p>
+              </div>
+              <div class="info-product2">
+                <p><span class="red">Quantidade: </span> {{product.amount}} </p>
+                <p><span class="red">Valor total: </span> {{product.value * product.amount | currency:'BRL' : 'symbol' : '1.2-2'}}</p>
+              </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button class="add-cart" (click)="removeItem(product.id)">Deletar item</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+</div>

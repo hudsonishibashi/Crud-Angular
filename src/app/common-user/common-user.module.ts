@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
@@ -18,7 +19,9 @@ import { CommonUserComponent } from './common-user.component';
     MatCardModule,
     MatTabsModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CommonUserModule { }

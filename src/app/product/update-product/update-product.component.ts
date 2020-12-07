@@ -36,6 +36,7 @@ export class UpdateProductComponent implements OnInit, ICanDeactivate {
         name: `${res.name}`,
         amount: `${res.amount}`,
         value: `${res.value}`,
+        image: res.image,
         category: res.category,
       })
     })
