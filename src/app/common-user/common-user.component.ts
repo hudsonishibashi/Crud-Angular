@@ -1,3 +1,4 @@
+import { NotificationService } from './../notification.service';
 import { AuthService } from './../login/auth.service';
 import { IProduct } from 'src/app/product/product';
 import { ProductService } from './../product/product.service';
@@ -21,7 +22,8 @@ export class CommonUserComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private authService: AuthService
+    private authService: AuthService,
+    private notification: NotificationService
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +42,14 @@ export class CommonUserComponent implements OnInit {
     const currentUser = this.authService.currentUserValue;
     this.listCart.push({id: idProduct, amount: this.amount.value});
     localStorage.setItem(`addCart${currentUser?.id}`, JSON.stringify(this.listCart));
-    //localStorage.removeItem('addCart');
+    this.notification.openDialog(
+      0,
+      'Item adicionado ao carrinho!', 
+      '',
+      false, 
+      this, 
+      () => {}
+    );
   }
 /*
   get listFilterFuncition(): string {

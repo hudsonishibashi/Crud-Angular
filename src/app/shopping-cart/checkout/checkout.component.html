@@ -1,0 +1,22 @@
+<div class="example-button-container">
+    <button mat-raised-button [disabled]="listCart.length === 0" (click)="checkout()">Finalizar</button>
+    <button mat-raised-button (click)="returnPage()">Voltar</button>
+</div>
+<div class="body" *ngIf="listCart">
+    <mat-list role="list" >
+        <div mat-subheader id="title"> Itens da compra </div >
+        <mat-divider></mat-divider>    
+        <mat-list-item role="listitem" *ngFor="let product of products" >
+            <p matLine>
+                <span class="info-product"> {{product.name}} </span>
+                <span class="info-product2"> Valor total do produto: {{product.value * product.amount | currency:'BRL' : 'symbol' : '1.2-2'}} </span>
+            </p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item  role = "listitem" >
+            <p matLine>
+                <span class="value-total"> Valor total: {{valueTotal | currency:'BRL' : 'symbol' : '1.2-2'}} </span>
+            </p>
+        </mat-list-item > 
+      </mat-list>
+</div>

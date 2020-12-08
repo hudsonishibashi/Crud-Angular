@@ -2,6 +2,7 @@ import { NotificationService } from './notification.service';
 import { AuthService } from './login/auth.service';
 import { Component } from '@angular/core';
 import { ILoginClient } from './client/models/client';
+import { ICart } from './common-user/cart';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,8 @@ export class AppComponent {
   currentUser!: ILoginClient;
   userDisplayName: any;
   currentViewMenu: any;
+  hidden: boolean = false;
+  listCart: Array<ICart> = [];
 
   constructor(
     private authService: AuthService,
@@ -30,6 +33,7 @@ export class AppComponent {
       (mostrar: boolean) => {
         this.userDisplayName = localStorage.getItem('loggedUser');
         this.verifyUser();
+        this.getListProductsCart();
         return this.viewMenu = mostrar;
       }
     );
@@ -37,6 +41,7 @@ export class AppComponent {
       this.viewMenu = true;
       this.userDisplayName = localStorage.getItem('loggedUser');
       this.verifyUser();
+      this.getListProductsCart();
     } else {
       this.viewMenu = false;
     }
@@ -65,5 +70,10 @@ export class AppComponent {
     } else {
       this.currentViewMenu = false;
     }
+  }
+
+  getListProductsCart() {
+    const currentUser = this.authService.currentUserValue;
+    this.listCart = JSON.parse(localStorage.getItem(`addCart${currentUser?.id}`) || '{}');
   }
 }

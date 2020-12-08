@@ -18,14 +18,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
+import {MatBadgeModule} from '@angular/material/badge';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
-import {MatCardModule} from '@angular/material/card';
 import { LoginComponent } from './login/login.component';
-import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +54,7 @@ import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
     MatFormFieldModule,
     MatCardModule,
     MatIconModule,
+    MatBadgeModule,
     AppRoutingModule
   ],
   providers: [

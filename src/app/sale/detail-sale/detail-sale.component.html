@@ -10,6 +10,10 @@
         <br>
         <mat-label  class="title-label">Nome do cliente: </mat-label>
         <a>{{nameClient}}</a>
+        <br>
+        <br>
+        <mat-label  class="title-label">Valor total da venda: </mat-label>
+        <a>{{valueTotal | currency:'BRL' : 'symbol' : '1.2-2'}}</a>
     </div>
 </mat-card>
 <div>

@@ -18,6 +18,7 @@ export class DetailSaleComponent implements OnInit {
   displayedColumns: string[] = ['name', 'amount', 'value', 'category'];
   id: any;
   idSale!: number;
+  valueTotal!: number;
   nameClient!: string;
   products: Array<IProduct> = [];
   dataSource: any;
@@ -43,6 +44,7 @@ export class DetailSaleComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.saleService.getSaleId(this.id).subscribe(async res => {
       this.idSale = res.id
+      this.valueTotal = res.totalValue;
       await this.getProduct(res.saleHasProducts);
       this.dataSource = new MatTableDataSource(this.products);
       this.getClientId(res.idClient).then(name => {

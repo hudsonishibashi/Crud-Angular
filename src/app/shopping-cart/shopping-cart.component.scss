@@ -15,6 +15,12 @@
     text-align: center;
     justify-content: center;
   }
+.message-list-null {
+    margin-top: 20%;
+    text-align: center;
+    font-size: 32px;
+    color: grey;
+}  
 .example-card {
     max-width: 380px;
     width: 100%;
@@ -34,7 +40,7 @@
 }  
 .info-product2 {
     float: left;
-    margin-left: 70px;
+    margin-left: 65px;
     text-align: end;
     justify-content: flex-end;
 }

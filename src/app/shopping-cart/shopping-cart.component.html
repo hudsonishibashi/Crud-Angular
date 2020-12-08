@@ -1,6 +1,10 @@
 <div class="example-button-container">
     <h1 class="title">Carrinho de compras</h1>
-    <button mat-raised-button>Finalizar compra</button>
+    <button mat-raised-button [routerLink]="['/checkout']">Finalizar compra</button>
+    <button mat-raised-button (click)="returnPage()">Voltar</button>
+</div>
+<div class="message-list-null" *ngIf="listCart.length == 0">
+  <p>Nenhum item foi adicionado ao carrinho!</p>
 </div>
 <div *ngIf="listCart" >
     <div class="inline-block" *ngFor="let product of products">
@@ -10,7 +14,7 @@
             alt="Image Photo" width="350px" height="230px">
           <mat-card-content>
               <div class="info-product">
-                  <p><span class="red">Produto: </span> {{product.name}} </p>
+                  <p><span class="red">Produto: </span> {{product.name | slice:0:18}}{{ product.name.length > 18 ? '...': ''}} </p>
                   <p><span class="red">Valor por unidade: </span> {{product.value | currency:'BRL' : 'symbol' : '1.2-2'}} </p>
               </div>
               <div class="info-product2">

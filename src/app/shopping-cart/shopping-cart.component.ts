@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../login/auth.service';
 import { ProductService } from 'src/app/product/product.service';
 import { Component, OnInit } from '@angular/core';
@@ -17,7 +18,8 @@ export class ShoppingCartComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -27,8 +29,6 @@ export class ShoppingCartComponent implements OnInit {
   getListProductsCart() {
     const currentUser = this.authService.currentUserValue;
     this.listCart = JSON.parse(localStorage.getItem(`addCart${currentUser?.id}`) || '{}');
-    console.log(`addCart${currentUser?.id}`);
-    console.log(this.listCart);
     if (this.listCart.values != null) {
       this.listCart.map(res => {
         this.getProductId(res.id, res.amount);
@@ -71,6 +71,10 @@ export class ShoppingCartComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  returnPage() {
+    this.router.navigate(['/common'])
   }
   
 }
