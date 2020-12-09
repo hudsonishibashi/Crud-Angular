@@ -20,12 +20,17 @@
 } 
 .info-product {
     text-align: start;
-    min-width: 70%;
+    min-width: 45%;
     float: left;
 }
 .info-product2 {
+    text-align: start;
+    min-width: 20%;
+    float: left;
+}
+.info-product3 {
     text-align: end;
-    min-width: 30%;
+    min-width: 35%;
     float: left;
 }
 .value-total {

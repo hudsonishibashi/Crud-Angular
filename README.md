@@ -6,6 +6,10 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
 
 Execute `ng serve` para um servidor de desenvolvimento. Navegue até `http://localhost:4200/`. O aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos de origem.
 
+## API consumida
+
+`https://github.com/hudsonishibashi/springboot-crud`
+
 ## Estrutura de código
 
 Execute `ng generate component component-name` para gerar um novo componente. Você também pode usar `ng generate directive|pipe|service|class|guard|interface|enum|module`.

@@ -1,3 +1,4 @@
+import { NotificationService } from './../../notification.service';
 import { SaleService } from './../../sale/sale.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -25,6 +26,7 @@ export class CheckoutComponent implements OnInit {
     private saleService: SaleService,
     private router: Router,
     private fb: FormBuilder,
+    private notification: NotificationService
   ) { }
 
   ngOnInit(): void {
@@ -77,10 +79,28 @@ export class CheckoutComponent implements OnInit {
   }
 
   checkout() {
-    this.saleService.createSale(this.saleForm.value).subscribe(res => {
-    });
-    this.saleForm.reset();
-    this.router.navigate(['/cart']);
+    this.notification.openDialog(
+      0,
+      'Deseja realmente finalizar essa compra?', 
+      'Está ação não poderá ser revertida.',
+      true, 
+      this, 
+      () => {
+        this.saleService.createSale(this.saleForm.value).subscribe(res => {
+        });
+        this.saleForm.reset();
+        this.notification.openDialog(
+          0,
+          'Compra realizada com sucesso!', 
+          '',
+          false, 
+          this, 
+          () => {
+            this.router.navigate(['/cart']);
+          }
+        );
+      }
+    );
   }
 
 }

@@ -1,3 +1,4 @@
+import { PurchasesHistoryComponent } from './purchases-history/purchases-history.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CommonUserComponent } from './common-user/common-user.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'category', component: CategoryComponent, canActivate: [AuthGuard], data: {roles: [true]}},
   { path: 'sale', component: SaleComponent, canActivate: [AuthGuard], data: {roles: [true]}},
   { path: 'cart', component: ShoppingCartComponent, canActivate: [AuthGuard], data: {roles: [false]}},
+  { path: 'history', component: PurchasesHistoryComponent, canActivate: [AuthGuard], data: {roles: [false]}},
   { path:'', redirectTo: 'home', pathMatch: 'full' }
 ];
 

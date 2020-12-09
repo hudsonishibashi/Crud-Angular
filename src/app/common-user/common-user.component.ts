@@ -2,7 +2,7 @@ import { NotificationService } from './../notification.service';
 import { AuthService } from './../login/auth.service';
 import { IProduct } from 'src/app/product/product';
 import { ProductService } from './../product/product.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ICart } from './cart';

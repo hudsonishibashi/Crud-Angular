@@ -1,7 +1,10 @@
+import { IProduct } from '../product/product';
+
 export interface SaleHasProduct {
     idSale: number;
     idProduct: number;
     qtdProduct: number;
+    products: IProduct;
 }
 
 export interface ISale {
@@ -52,4 +55,10 @@ export interface ICreateSale {
     totalValue: number;
     idClient: number;
     saleHasProducts: SaleHasProduct[];
+}
+
+export interface CreateSaleHasProduct {
+    name: string;
+    amount: number;
+    value: number;
 }

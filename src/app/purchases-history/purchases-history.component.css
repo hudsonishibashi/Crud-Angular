@@ -1,0 +1,77 @@
+.title {
+    padding-top: 12px;
+    text-align: center;
+    color: brown;
+    font-size: 36px;
+    font-weight: bolder;
+}
+.example-button-container button {
+    display: inline;
+    background-color: brown;
+    color: white;
+    margin-left: 85%;
+    margin-bottom: 16px;
+    width: 15%;
+    text-align: center;
+    justify-content: center;
+  }
+  .body {
+    margin-top: 2%;
+}
+.body-info {
+    margin-top: px;
+}
+.info-product {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    text-align: start;
+    min-width: 45%;
+    float: left;
+    color: brown;
+    font-weight: 500;
+}
+.info-product2 {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    text-align: start;
+    min-width: 25%;
+    float: left;
+    color: brown;
+    font-weight: 500;
+}
+.info-product3 {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    text-align: end;
+    min-width: 30%;
+    float: left;
+    margin-bottom: 8px;
+    color: brown;
+    font-weight: 500;
+}
+.info-shp-product {
+    text-align: start;
+    min-width: 45%;
+    float: left;
+}
+.info-shp-product2 {
+    text-align: start;
+    min-width: 25%;
+    float: left;
+}
+.info-shp-product3 {
+    text-align: end;
+    min-width: 30%;
+    float: left;
+    
+}
+.example-tree-invisible {
+    display: none;
+  }
+  
+  .example-tree ul,
+  .example-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+  }

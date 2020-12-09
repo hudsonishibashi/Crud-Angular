@@ -1,3 +1,4 @@
+import { PurchasesHistoryModule } from './purchases-history/purchases-history.module';
 import { RegisterModule } from './register/register.module';
 import { CommonUserModule } from './common-user/common-user.module';
 import { ShortNamePipe } from './shared/short-name.pipe';
@@ -46,6 +47,7 @@ import { LoginComponent } from './login/login.component';
     CommonUserModule,
     ShoppingCartModule,
     RegisterModule,
+    PurchasesHistoryModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
