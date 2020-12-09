@@ -1,12 +1,15 @@
 <div class="example-button-container">
-    <h1 class="title">Histórico de compras</h1>
+    <h1 class="title">Meu histórico de compras</h1>
     <button mat-raised-button (click)="returnPage()">Voltar</button>
 </div>
 <div class="body" *ngIf="listSale">
     <mat-list role="list">
         <div mat-subheader id="title"> Compras </div >
-        <mat-divider></mat-divider>    
-       <div *ngFor="let sale of listSale">
+        <mat-divider></mat-divider>
+        <div class="message-list-null" *ngIf="messageNotHistory === false">
+            <p>Nenhuma compra realizada!</p>
+        </div> 
+       <div *ngFor="let sale of listSale">   
             <mat-list-item role="listitem" class="body-info" *ngIf="sale.idClient === userId">
                 <div matLine>
                     <span class="info-product"> Código da compra: {{sale.id}} </span>

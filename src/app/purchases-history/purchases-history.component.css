@@ -75,3 +75,9 @@
     margin-bottom: 0;
     list-style-type: none;
   }
+  .message-list-null {
+    margin-top: 20%;
+    text-align: center;
+    font-size: 32px;
+    color: grey;
+} 

@@ -17,7 +17,7 @@ export class CommonUserComponent implements OnInit {
   category!: number;
   color: ThemePalette = 'warn';
   amount = new FormControl(1, [Validators.min(1)]);
-  listCart: Array<ICart> = []
+  listCart: Array<ICart> = [];
   listFilter!: string;
 
   constructor(
@@ -28,6 +28,7 @@ export class CommonUserComponent implements OnInit {
 
   ngOnInit(): void {
     const currentUser = this.authService.currentUserValue;
+    localStorage.setItem(`addCart${currentUser?.id}`, JSON.stringify(this.listCart));
     this.listCart = JSON.parse(localStorage.getItem(`addCart${currentUser?.id}`) || '{}');
     this.getProduct();
   }

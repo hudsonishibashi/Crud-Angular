@@ -14,7 +14,7 @@ import { IProduct } from '../product/product';
 export class PurchasesHistoryComponent implements OnInit {
   listSale!: ISale[];
   userId: any;
-  panelOpenState = false;
+  messageNotHistory: boolean = false;
 
   constructor(
     private saleService: SaleService,
@@ -42,7 +42,7 @@ export class PurchasesHistoryComponent implements OnInit {
     listSale.map(element => {
       if (element.idClient === currentUser?.id) {
         this.getProduct(element.saleHasProducts);
-        
+        this.messageNotHistory = true;
       }
     });
   }
