@@ -1,1 +1,21 @@
-<p>user works!</p>
+<div class="example-button-container">
+    <h1 class="title">Meu perfil</h1>
+    <button mat-raised-button (click)="returnPage()">Voltar</button>
+</div>
+<div class="body-primary" *ngIf="user" >
+    <div class="body">
+        <label>Nome: </label>
+        <span> {{user.name}} </span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="body">
+        <label>E-mail: </label>
+        <span> {{user.email}} </span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="body">
+        <label>Telefone: </label>
+        <span> {{user.phone}} </span>
+    </div>
+</div>
+

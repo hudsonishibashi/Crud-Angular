@@ -3,7 +3,7 @@
     <button mat-raised-button [routerLink]="['/checkout']">Finalizar compra</button>
     <button mat-raised-button (click)="returnPage()">Voltar</button>
 </div>
-<div class="message-list-null" *ngIf="listCart.length == 0">
+<div class="message-list-null" *ngIf="listCart.length == 0 || listCart.length == null">
   <p>Nenhum item foi adicionado ao carrinho!</p>
 </div>
 <div *ngIf="listCart" >

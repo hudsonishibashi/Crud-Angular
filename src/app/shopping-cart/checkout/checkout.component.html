@@ -1,5 +1,5 @@
 <div class="example-button-container">
-    <button mat-raised-button [disabled]="listCart.length === 0" (click)="checkout()">Finalizar</button>
+    <button mat-raised-button [disabled]="listCart.length === 0 || listCart.length == null" (click)="checkout()">Finalizar</button>
     <button mat-raised-button (click)="returnPage()">Voltar</button>
 </div>
 <div class="body" *ngIf="listCart">

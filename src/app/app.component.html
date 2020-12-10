@@ -13,11 +13,11 @@
         <button mat-icon-button id="secondary-button" routerLinkActive="active" *ngIf="!currentViewMenu" [routerLink]="['/history']">
           <mat-icon>history</mat-icon>
         </button>
-        <a id="user-display" *ngIf="currentViewMenu"> Olá, {{ userDisplayName | shortName }} </a>
+        <span id="user-display" *ngIf="currentViewMenu" [routerLink]="['/user']"> Olá, {{ userDisplayName | shortName }} </span>
         <button mat-icon-button id="ultimate-button" *ngIf="currentViewMenu" (click)="openDialog()">
           <mat-icon>exit_to_app</mat-icon>
         </button>
-        <span id="common-user-display" *ngIf="!currentViewMenu"> Olá, {{ userDisplayName | shortName }} </span>
+        <span id="common-user-display" *ngIf="!currentViewMenu" [routerLink]="['/user']"> Olá, {{ userDisplayName | shortName }} </span>
         <button mat-icon-button id="common-ultimate-button" *ngIf="!currentViewMenu" (click)="openDialog()">
           <mat-icon>exit_to_app</mat-icon>
         </button>

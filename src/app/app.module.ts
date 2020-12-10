@@ -1,3 +1,4 @@
+import { UserModule } from './user/user.module';
 import { PurchasesHistoryModule } from './purchases-history/purchases-history.module';
 import { RegisterModule } from './register/register.module';
 import { CommonUserModule } from './common-user/common-user.module';
@@ -28,15 +29,13 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 import { LoginComponent } from './login/login.component';
-import { UserComponent } from './user/user.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     DialogConfirmComponent,
     LoginComponent,
-    ShortNamePipe,
-    UserComponent
+    ShortNamePipe
   ],
   imports: [
     BrowserModule,
@@ -50,6 +49,7 @@ import { UserComponent } from './user/user.component';
     ShoppingCartModule,
     RegisterModule,
     PurchasesHistoryModule,
+    UserModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,

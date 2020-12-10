@@ -28,8 +28,7 @@ export class CommonUserComponent implements OnInit {
 
   ngOnInit(): void {
     const currentUser = this.authService.currentUserValue;
-    localStorage.setItem(`addCart${currentUser?.id}`, JSON.stringify(this.listCart));
-    this.listCart = JSON.parse(localStorage.getItem(`addCart${currentUser?.id}`) || '{}');
+    this.listCart = JSON.parse(localStorage.getItem(`addCart${currentUser?.id}`) || '[]');
     this.getProduct();
   }
 

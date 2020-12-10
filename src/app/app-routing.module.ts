@@ -11,6 +11,7 @@ import { ClientComponent } from './client/client.component';
 import { CategoryComponent } from './category/category.component';
 import { SaleComponent } from './sale/sale.component';
 import { RegisterComponent } from './register/register.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'sale', component: SaleComponent, canActivate: [AuthGuard], data: {roles: [true]}},
   { path: 'cart', component: ShoppingCartComponent, canActivate: [AuthGuard], data: {roles: [false]}},
   { path: 'history', component: PurchasesHistoryComponent, canActivate: [AuthGuard], data: {roles: [false]}},
+  { path: 'user', component: UserComponent},
   { path:'', redirectTo: 'home', pathMatch: 'full' }
 ];
 

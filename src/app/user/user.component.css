@@ -1,0 +1,28 @@
+.title {
+    padding-top: 12px;
+    text-align: center;
+    color: brown;
+    font-size: 36px;
+    font-weight: bolder;
+}
+.example-button-container button {
+    display: inline;
+    background-color: brown;
+    color: white;
+    margin-left: 85%;
+    margin-bottom: 16px;
+    width: 15%;
+    text-align: center;
+    justify-content: center;
+}
+label {
+    font-weight: bold;
+    color: brown;
+}
+.body-primary {
+    margin-top: 10%;
+}
+.body {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
