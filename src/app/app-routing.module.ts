@@ -1,3 +1,4 @@
+import { DeactivateGuard } from './guards/deactivate.guard';
 import { PurchasesHistoryComponent } from './purchases-history/purchases-history.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CommonUserComponent } from './common-user/common-user.component';
@@ -13,7 +14,7 @@ import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
+  { path: 'register', component: RegisterComponent, canDeactivate: [DeactivateGuard]},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard], data: {roles: [true]}},
   { path: 'common', component: CommonUserComponent, canActivate: [AuthGuard], data: {roles: [false]}},
   { path: 'client', component: ClientComponent, canActivate: [AuthGuard], data: {roles: [true]}},

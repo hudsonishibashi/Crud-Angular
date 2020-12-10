@@ -14,8 +14,11 @@
     width: 15%;
     text-align: center;
     justify-content: center;
-  }
-  .body {
+}
+#title-purchases {
+    font-size: 20px;
+}  
+.body {
     margin-top: 2%;
 }
 .body-info {
@@ -68,14 +71,14 @@
 .example-tree-invisible {
     display: none;
   }
-  
-  .example-tree ul,
-  .example-tree li {
+
+.example-tree ul,
+.example-tree li {
     margin-top: 0;
     margin-bottom: 0;
     list-style-type: none;
-  }
-  .message-list-null {
+}
+.message-list-null {
     margin-top: 20%;
     text-align: center;
     font-size: 32px;

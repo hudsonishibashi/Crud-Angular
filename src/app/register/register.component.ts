@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../login/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
@@ -15,8 +16,12 @@ export class RegisterComponent implements OnInit {
   hide = true;
   messageCredentials!: string;
   public mask = ['+', '5', '5', ' ', '(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  private modifyForm: boolean = false;
   
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
   }
@@ -31,6 +36,31 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.authService.register(this.name.value, this.email.value, this.phone.value, this.password.value);
+    this.modifyForm = false;
+  }
+
+  returnPage() {
+    this.router.navigate(['/login']);
+  }
+
+  input() {
+    this.modifyForm = true;
+  }
+
+  modifyTrueRouter() {
+    let verify: boolean = true;
+    if (this.modifyForm) {
+      if (confirm('Tem certeza que deseja sair da página? Os dados do cadastro serão perdidos.')){
+        verify = true
+      } else {
+        verify = false;
+      }
+    }
+    return verify;
+  }
+
+  isDisabled(): boolean {
+    return this.modifyTrueRouter();
   }
 
 }

@@ -7,32 +7,35 @@
 <div class="example-container">
     <mat-form-field appearance="fill">
       <mat-label>Nome</mat-label>
-      <input matInput [formControl]="name" required>
+      <input matInput [formControl]="name" (input)="input()" required>
     </mat-form-field>
   </div>
 <div class="example-container">
     <mat-form-field appearance="fill">
       <mat-label>Telefone</mat-label>
-      <input matInput type="text" placeholder="(00)00000-0000" [textMask]="{mask: mask}" [formControl]="phone" >
+      <input matInput type="text" placeholder="(00)00000-0000" [textMask]="{mask: mask}" [formControl]="phone" (input)="input()">
     </mat-form-field>
   </div>
 <div class="example-container">
     <mat-form-field appearance="fill">
       <mat-label>E-mail</mat-label>
-      <input matInput placeholder="exemplo@exemplo.com" [formControl]="email" required>
+      <input matInput placeholder="exemplo@exemplo.com" [formControl]="email" (input)="input()" required>
       <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
   </div>
   <div class="example-container">
     <mat-form-field appearance="fill">
         <mat-label>Senha</mat-label>
-        <input matInput [formControl]="password" [type]="hide ? 'password' : 'text'" required>
+        <input matInput [formControl]="password" [type]="hide ? 'password' : 'text'" (input)="input()" required>
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
   </div>
   <div class="example-container">
-    <button mat-raised-button class="button" (click)="register()">Cadastrar</button>
+    <button mat-raised-button class="button" [disabled]="!name.valid || !phone.valid || !email.valid || !password.valid" (click)="register()">Cadastrar</button>
+  </div>
+  <div class="example-container-2">
+    <button mat-raised-button class="button-register" (click)="returnPage()">Login</button>
   </div>
 

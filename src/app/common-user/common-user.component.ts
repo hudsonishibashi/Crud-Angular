@@ -42,6 +42,7 @@ export class CommonUserComponent implements OnInit {
   addCart(idProduct: any) {
     const currentUser = this.authService.currentUserValue;
     this.listCart.push({id: idProduct, amount: this.amount.value});
+    console.log(this.amount.value);
     localStorage.setItem(`addCart${currentUser?.id}`, JSON.stringify(this.listCart));
     this.notification.openDialog(
       0,
@@ -52,19 +53,5 @@ export class CommonUserComponent implements OnInit {
       () => {}
     );
   }
-/*
-  get listFilterFuncition(): string {
-    return this.listFilter;
-  }
-  set listFilterFuncition(value:string) {
-    this.listFilter = value;
-    this.products = this.listFilter ? this.performFilter(this.listFilter) : this.products;
-  }
-
-  performFilter(filterBy: string): IProduct[] {
-    filterBy = filterBy.toLocaleLowerCase();
-    return this.products.filter((product: IProduct) => product.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
-}
-*/
 
 }

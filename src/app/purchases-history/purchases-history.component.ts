@@ -4,7 +4,6 @@ import { SaleService } from './../sale/sale.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ISale, SaleHasProduct } from '../sale/sale';
-import { IProduct } from '../product/product';
 
 @Component({
   selector: 'app-purchases-history',

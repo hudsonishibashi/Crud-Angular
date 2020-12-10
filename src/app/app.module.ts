@@ -28,13 +28,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 import { LoginComponent } from './login/login.component';
+import { UserComponent } from './user/user.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     DialogConfirmComponent,
     LoginComponent,
-    ShortNamePipe
+    ShortNamePipe,
+    UserComponent
   ],
   imports: [
     BrowserModule,

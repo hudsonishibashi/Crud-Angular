@@ -37,11 +37,19 @@ export class LoginComponent implements OnInit {
   }
 
   userCredentials() {
-    this.authService.messageCredentialEmmilter.subscribe(
-      (message: string) => {
-        this.messageCredentials = message;
-      }
-    );
+    if (this.email.value != '' && this.password.value != ''){
+      this.authService.messageCredentialEmmilter.subscribe(
+        (message: string) => {
+          this.messageCredentials = message;
+        }
+      );
+    } else if (this.email.value != '') {
+      this.messageCredentials = 'Insira sua senha!';
+    } else if (this.password.value != '') {
+      this.messageCredentials = 'Insira seu e-mail';
+    } else {
+      this.messageCredentials = 'Insira seu e-mail e senha';
+    }
   }
 
 }
