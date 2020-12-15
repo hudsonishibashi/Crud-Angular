@@ -21,14 +21,14 @@ export class ClientService {
 
   getClient(): Observable<ResponseIClient> {
     return this.http.get<ResponseIClient>(this.url).pipe(
-      tap(data => console.log('All: ' + JSON.stringify(data))),
+      tap(data => console.log('All: ' + 'get success')),
       catchError(this.handleError)
     );
   }
 
   createClient(request: any): Observable<CreateIClient> {
     return this.http.post<any>(this.url, request, this.httpOptions).pipe(
-      tap(data => console.log('All: ' + JSON.stringify(data))),
+      tap(data => console.log('All: ' + 'create success')),
       catchError(this.handleError)
     );
   }
@@ -36,7 +36,7 @@ export class ClientService {
   getClientId(id: any): Observable<IClient> {
     const _url = `${this.url}/${id}`;
     return this.http.get<IClient>(_url).pipe(
-      tap(data => console.log('All: ' + JSON.stringify(data))),
+      tap(data => console.log('All: ' + 'get success')),
       catchError(this.handleError)
     );
   }
@@ -44,7 +44,7 @@ export class ClientService {
   updateClient(id: any, request: any): Observable<IClient> {
     const _url = `${this.url}/${id}`;
     return this.http.put<IClient>(_url, request).pipe(
-      tap(data => console.log('All: ' + JSON.stringify(data))),
+      tap(data => console.log('All: ' + 'update success')),
       catchError(this.handleError)
     );
   }
@@ -52,14 +52,14 @@ export class ClientService {
   deleteClient(id: any): Observable<any> {
     const _url = `${this.url}/${id}`;
     return this.http.delete(_url).pipe(
-      tap(data => console.log('All: ' + JSON.stringify(data))),
+      tap(data => console.log('All: ' + 'delete success')),
       catchError(this.handleError)
     );
   }
 
   verifyLoginClient(request: any): Observable<IResponseLoginClient> {
     return this.http.post<any>(this.urlLogin, request, this.httpOptions).pipe(
-      tap(data => console.log('All: ' + JSON.stringify(data))),
+      tap(data => console.log('All: ' + 'login success')),
       catchError(this.handleError)
     );
   }
