@@ -38,8 +38,8 @@ export class AuthService {
       this.loggedClient = response;
       if (this.loggedClient != null) {
         localStorage.setItem('currentUser', JSON.stringify(this.client));
-        localStorage.setItem('loggedUserComplete',JSON.stringify( this.loggedClient))
-        localStorage.setItem('loggedUser', this.loggedClient.name)
+        localStorage.setItem('loggedUserComplete',JSON.stringify( this.loggedClient));
+        localStorage.setItem('loggedUser', this.loggedClient.name);
         this.currentUserSubject.next(this.loggedClient);
         this.menuEmitter.emit(true);
         this.router.navigate(['home']);
@@ -73,6 +73,7 @@ export class AuthService {
     localStorage.removeItem('loggedUser');
     localStorage.removeItem('loggedUserComplete');
     this.currentUserSubject.next(null);
+    this.menuEmitter.emit(false);
     this.router.navigate(['login']);
   }
 }

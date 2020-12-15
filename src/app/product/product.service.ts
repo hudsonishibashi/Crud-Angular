@@ -9,13 +9,14 @@ import { IResponseProduct, ICreateProduct, IProduct } from './product';
 })
 export class ProductService {
   private url = 'http://localhost:8080/api/product';
-
+ /*
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     })
   };
-
+*/
   constructor(private http: HttpClient) { }
 
   getProduct(): Observable<IResponseProduct> {
@@ -26,7 +27,7 @@ export class ProductService {
   }
 
   createProduct(request: any): Observable<ICreateProduct> {
-    return this.http.post<any>(this.url, request, this.httpOptions).pipe(
+    return this.http.post<any>(this.url, request).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );

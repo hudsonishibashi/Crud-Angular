@@ -9,13 +9,13 @@ import { ResponseICategory, ICreateCategory, ICategory } from './category';
 })
 export class CategoryService {
   private url = 'http://localhost:8080/api/category';
-
+/*
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   };
-
+*/
   constructor(private http: HttpClient) { }
 
   getCategory(): Observable<ResponseICategory> {
@@ -26,7 +26,7 @@ export class CategoryService {
   }
 
   createCategory(request: any): Observable<ICreateCategory> {
-    return this.http.post<any>(this.url, request, this.httpOptions).pipe(
+    return this.http.post<any>(this.url, request).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
