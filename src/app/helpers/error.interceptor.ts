@@ -15,14 +15,14 @@ export class ErrorInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(catchError(err => {
             if (err.status === 401 || err.status === 403) {
-                // auto logout if 401 response returned from api
+                this.authService.logout();
                 this.notification.openDialog(
                     0,
                     'Sua seção expirou!',
-                    'Faça login novamente.',
+                    'É necessário fazer login novamente.',
                     false,
                     this,
-                    () => {this.authService.logout();}
+                    () => {}
                 );
             }
 
