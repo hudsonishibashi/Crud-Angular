@@ -14,7 +14,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(catchError(err => {
-            if (err.status === 401 || err.status === 403) {
+            if (err.status === 403) {
                 this.authService.logout();
                 this.notification.openDialog(
                     0,
@@ -22,7 +22,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                     'É necessário fazer login novamente.',
                     false,
                     this,
-                    () => {}
+                    () => {this.notification.dialog.closeAll()}
                 );
             }
 

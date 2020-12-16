@@ -1,3 +1,4 @@
+import { catchError } from 'rxjs/operators';
 import { NotificationService } from './../notification.service';
 import { ClientService } from 'src/app/client/client.service';
 import { Router } from '@angular/router';
@@ -47,7 +48,9 @@ export class AuthService {
         this.menuEmitter.emit(false);
         this.messageCredentialEmmilter.emit('Dados inválidos. Tente novamente!');
       }
-    });
+    },
+    err => this.messageCredentialEmmilter.emit('Dados inválidos. Tente novamente!')
+    );
   }
 
   register(name: string, email: string, phone: string, password: string) {
