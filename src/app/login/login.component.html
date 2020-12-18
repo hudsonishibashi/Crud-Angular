@@ -14,7 +14,7 @@
   <div class="example-container">
     <mat-form-field appearance="fill">
         <mat-label>Senha</mat-label>
-        <input matInput [formControl]="password" [type]="hide ? 'password' : 'text'">
+        <input matInput [formControl]="password" [type]="hide ? 'password' : 'text'" (keyup.enter)="login()">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>

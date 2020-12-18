@@ -9,13 +9,13 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class SaleService {
   private url = 'http://localhost:8080/api/sale';
-
+/*
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   };
-
+*/
   constructor(private http: HttpClient) { }
 
   getSale(): Observable<IResponseSale> {
@@ -26,7 +26,7 @@ export class SaleService {
   }
 
   createSale(request: any): Observable<ICreateSale> {
-    return this.http.post<any>(this.url, request, this.httpOptions).pipe(
+    return this.http.post<any>(this.url, request).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );

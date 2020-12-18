@@ -1,3 +1,4 @@
+import { catchError } from 'rxjs/operators';
 import { NotificationService } from './../notification.service';
 import { ClientService } from 'src/app/client/client.service';
 import { Router } from '@angular/router';
@@ -38,8 +39,8 @@ export class AuthService {
       this.loggedClient = response;
       if (this.loggedClient != null) {
         localStorage.setItem('currentUser', JSON.stringify(this.client));
-        localStorage.setItem('loggedUserComplete',JSON.stringify( this.loggedClient))
-        localStorage.setItem('loggedUser', this.loggedClient.name)
+        localStorage.setItem('loggedUserComplete',JSON.stringify( this.loggedClient));
+        localStorage.setItem('loggedUser', this.loggedClient.name);
         this.currentUserSubject.next(this.loggedClient);
         this.menuEmitter.emit(true);
         this.router.navigate(['home']);
@@ -47,7 +48,9 @@ export class AuthService {
         this.menuEmitter.emit(false);
         this.messageCredentialEmmilter.emit('Dados inválidos. Tente novamente!');
       }
-    });
+    },
+    err => this.messageCredentialEmmilter.emit('Dados inválidos. Tente novamente!')
+    );
   }
 
   register(name: string, email: string, phone: string, password: string) {
@@ -73,6 +76,7 @@ export class AuthService {
     localStorage.removeItem('loggedUser');
     localStorage.removeItem('loggedUserComplete');
     this.currentUserSubject.next(null);
+    this.menuEmitter.emit(false);
     this.router.navigate(['login']);
   }
 }

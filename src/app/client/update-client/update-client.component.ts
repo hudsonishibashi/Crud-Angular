@@ -33,7 +33,6 @@ export class UpdateClientComponent implements OnInit, ICanDeactivate {
         name: `${res.name}`,
         phone: `${res.phone}`,
         email: `${res.email}`,
-        password: `${res.password}`,
         admin: res.admin
       })
     })

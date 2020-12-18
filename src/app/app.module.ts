@@ -1,3 +1,5 @@
+import { ErrorInterceptor } from './helpers/error.interceptor';
+import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
 import { UserModule } from './user/user.module';
 import { PurchasesHistoryModule } from './purchases-history/purchases-history.module';
 import { RegisterModule } from './register/register.module';
@@ -17,7 +19,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
@@ -64,7 +66,9 @@ import { LoginComponent } from './login/login.component';
   providers: [
     NotificationService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

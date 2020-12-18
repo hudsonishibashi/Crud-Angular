@@ -10,13 +10,13 @@ import { catchError, tap } from 'rxjs/operators';
 export class ClientService {
   private url = 'http://localhost:8080/api/client';
   private urlLogin = 'http://localhost:8080/api/client/login';
-
+/*
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   };
-
+*/
   constructor(private http: HttpClient) { }
 
   getClient(): Observable<ResponseIClient> {
@@ -27,7 +27,7 @@ export class ClientService {
   }
 
   createClient(request: any): Observable<CreateIClient> {
-    return this.http.post<any>(this.url, request, this.httpOptions).pipe(
+    return this.http.post<any>(this.url, request).pipe(
       tap(data => console.log('All: ' + 'create success')),
       catchError(this.handleError)
     );
@@ -58,7 +58,7 @@ export class ClientService {
   }
 
   verifyLoginClient(request: any): Observable<IResponseLoginClient> {
-    return this.http.post<any>(this.urlLogin, request, this.httpOptions).pipe(
+    return this.http.post<any>(this.urlLogin, request).pipe(
       tap(data => console.log('All: ' + 'login success')),
       catchError(this.handleError)
     );

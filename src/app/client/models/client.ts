@@ -59,4 +59,5 @@ export interface IResponseLoginClient {
   name: string;
   email: string;
   admin: boolean;
+  token: string;
 }
