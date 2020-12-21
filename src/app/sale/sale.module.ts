@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { DeactivateGuard } from './../guards/deactivate.guard';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -42,6 +43,7 @@ import { DetailSaleComponent } from './detail-sale/detail-sale.component';
     MatDialogModule,
     MatPaginatorModule,
     MatCardModule,
+    SharedModule,
     SaleRoutingModule,
   ],
   providers: [

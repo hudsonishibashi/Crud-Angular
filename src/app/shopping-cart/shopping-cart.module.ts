@@ -1,3 +1,5 @@
+import { SharedModule } from './../shared/shared.module';
+import { ReplacePipe } from './../shared/replace.pipe';
 import { ShoppingCartRoutingModule } from './shopping-cart-routing.module';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -26,6 +28,7 @@ import { ShoppingCartComponent } from './shopping-cart.component';
     MatButtonModule,
     MatInputModule,
     MatListModule,
+    SharedModule,
     ShoppingCartRoutingModule
   ]
 })

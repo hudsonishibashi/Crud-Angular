@@ -15,11 +15,11 @@
           <mat-card-content>
               <div class="info-product">
                   <p><span class="red">Produto: </span> {{product.name | slice:0:18}}{{ product.name.length > 18 ? '...': ''}} </p>
-                  <p><span class="red">Valor por unidade: </span> {{product.value | currency:'BRL' : 'symbol' : '1.2-2'}} </p>
+                  <p><span class="red">Valor por unidade: </span> {{product.value | currency:'BRL' : 'symbol' : '1.2-2' | replace: '.' : ','}} </p>
               </div>
               <div class="info-product2">
                 <p><span class="red">Quantidade: </span> {{product.amount}} </p>
-                <p><span class="red">Valor total: </span> {{product.value * product.amount | currency:'BRL' : 'symbol' : '1.2-2'}}</p>
+                <p><span class="red">Valor total: </span> {{product.value * product.amount | currency:'BRL' : 'symbol' : '1.2-2' | replace: '.' : ','}}</p>
               </div>
           </mat-card-content>
           <mat-card-actions>

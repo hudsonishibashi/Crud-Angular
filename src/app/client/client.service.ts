@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
-import { ResponseIClient, CreateIClient, IClient, IResponseLoginClient } from './models/client';
+import { ResponseIClient, CreateIClient, IClient, IResponseLoginClient, IUpdateClient } from './models/client';
 import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -41,9 +41,8 @@ export class ClientService {
     );
   }
 
-  updateClient(id: any, request: any): Observable<IClient> {
-    const _url = `${this.url}/${id}`;
-    return this.http.put<IClient>(_url, request).pipe(
+  updateClient(request: any): Observable<IUpdateClient> {
+    return this.http.put<IClient>(this.url, request).pipe(
       tap(data => console.log('All: ' + 'update success')),
       catchError(this.handleError)
     );

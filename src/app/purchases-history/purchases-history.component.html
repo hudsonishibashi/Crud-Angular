@@ -14,14 +14,14 @@
                 <div matLine>
                     <span class="info-product"> Código da compra: {{sale.id}} </span>
                     <span class="info-product2"> Data: {{sale.data | date:"dd/MM/yyyy"}} </span>
-                    <span class="info-product3"> Valor total: {{sale.totalValue | currency:'BRL' : 'symbol' : '1.2-2'}} </span>
+                    <span class="info-product3"> Valor total: {{sale.totalValue | currency:'BRL' : 'symbol' : '1.2-2' | replace: '.' : ','}} </span>
                 </div>
                 <div matLine *ngFor="let shp of sale.saleHasProducts">
                    <div *ngIf="shp.products" >
                         <p>
                             <span class="info-shp-product"> {{shp.products.name}} </span>
                             <span class="info-shp-product2"> Quantidade: {{shp.qtdProduct}} </span>
-                            <span class="info-shp-product3"> Valor total do produto: {{shp.products.value * shp.qtdProduct | currency:'BRL' : 'symbol' : '1.2-2'}} </span>
+                            <span class="info-shp-product3"> Valor total do produto: {{shp.products.value * shp.qtdProduct | currency:'BRL' : 'symbol' : '1.2-2' | replace: '.' : ','}} </span>
                         </p>
                    </div>
                 </div>

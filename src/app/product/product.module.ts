@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { DeactivateGuard } from './../guards/deactivate.guard';
 import { ProductRoutingModule } from './product-routing.module';
 import { NgModule } from '@angular/core';
@@ -38,6 +39,7 @@ import { UpdateProductComponent } from './update-product/update-product.componen
     MatProgressSpinnerModule,
     MatDialogModule,
     MatPaginatorModule,
+    SharedModule,
     ProductRoutingModule,
   ],
   providers: [

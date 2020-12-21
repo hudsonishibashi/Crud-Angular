@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
 import { UserModule } from './user/user.module';
@@ -36,8 +37,7 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     HomeComponent,
     DialogConfirmComponent,
-    LoginComponent,
-    ShortNamePipe
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +61,7 @@ import { LoginComponent } from './login/login.component';
     MatCardModule,
     MatIconModule,
     MatBadgeModule,
+    SharedModule,
     AppRoutingModule
   ],
   providers: [

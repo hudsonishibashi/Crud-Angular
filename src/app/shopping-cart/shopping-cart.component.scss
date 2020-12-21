@@ -1,13 +1,15 @@
+$color-primary: brown;
+
 .title {
     padding-top: 12px;
     text-align: center;
-    color: brown;
+    color: $color-primary;
     font-size: 36px;
     font-weight: bolder;
 }
 .example-button-container button {
     display: inline;
-    background-color: brown;
+    background-color: $color-primary;
     color: white;
     margin-left: 85%;
     margin-bottom: 16px;
@@ -32,19 +34,19 @@
     margin-top: 5%;
 }
 .add-cart {
-    background: brown;
+    background: $color-primary;
     color: white;
 }
 .info-product {
     float: left;
 }  
 .info-product2 {
-    float: left;
+    @extend .info-product;
     margin-left: 65px;
     text-align: end;
     justify-content: flex-end;
 }
 span.red {
-    color: brown;
+    color: $color-primary;
     font-weight: bold;
 }  

@@ -10,13 +10,13 @@
             <p matLine>
                 <span class="info-product"> {{product.name}} </span>
                 <span class="info-product2"> Quantidade: {{product.amount}} </span>
-                <span class="info-product3"> Valor total do produto: {{product.value * product.amount | currency:'BRL' : 'symbol' : '1.2-2'}} </span>
+                <span class="info-product3"> Valor total do produto: {{product.value * product.amount | currency:'BRL' : 'symbol' : '1.2-2'  | replace: '.' : ','}} </span>
             </p>
         </mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item  role = "listitem" >
             <p matLine>
-                <span class="value-total"> Valor total: {{valueTotal | currency:'BRL' : 'symbol' : '1.2-2'}} </span>
+                <span class="value-total"> Valor total: {{valueTotal | currency:'BRL' : 'symbol' : '1.2-2' | replace: '.' : ','}} </span>
             </p>
         </mat-list-item > 
       </mat-list>

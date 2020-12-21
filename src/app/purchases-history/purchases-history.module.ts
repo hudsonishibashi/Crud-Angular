@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { PurchasesHistoryComponent } from './purchases-history.component';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatListModule,
     FormsModule,
+    SharedModule,
     MatIconModule
   ]
 })

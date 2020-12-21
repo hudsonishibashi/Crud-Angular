@@ -30,6 +30,7 @@ export class UpdateClientComponent implements OnInit, ICanDeactivate {
     this.id = this.route.snapshot.paramMap.get('id');
     this.clientService.getClientId(this.id).subscribe(res => {
       this.clientForm = this.fb.group({
+        id: this.id,
         name: `${res.name}`,
         phone: `${res.phone}`,
         email: `${res.email}`,
@@ -40,7 +41,7 @@ export class UpdateClientComponent implements OnInit, ICanDeactivate {
   }
 
   save() {
-    this.clientService.updateClient(this.id, this.clientForm.value).subscribe(res => {
+    this.clientService.updateClient(this.clientForm.value).subscribe(res => {
     })
     this.clientForm.reset();
     this.createSuccess = true;

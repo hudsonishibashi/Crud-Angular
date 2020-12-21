@@ -61,3 +61,11 @@ export interface IResponseLoginClient {
   admin: boolean;
   token: string;
 }
+
+export interface IUpdateClient {
+  id: number;
+  name: string;
+  phone: string;
+  email: string;
+  admin: boolean;
+}
