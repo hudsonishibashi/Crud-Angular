@@ -10,6 +10,7 @@ import { catchError, tap } from 'rxjs/operators';
 export class ClientService {
   private url = 'http://localhost:8080/api/client';
   private urlLogin = 'http://localhost:8080/api/client/login';
+  private urlPagination = '';
 /*
   httpOptions = {
     headers: new HttpHeaders({
@@ -19,8 +20,13 @@ export class ClientService {
 */
   constructor(private http: HttpClient) { }
 
-  getClient(): Observable<ResponseIClient> {
-    return this.http.get<ResponseIClient>(this.url).pipe(
+  getClient(page?: number, size?: number): Observable<ResponseIClient> {
+    if ((page && size) != null) {
+      this.urlPagination = `${this.url}?page=${page}&size=${size}`;
+    } else {
+      this.urlPagination = this.url;
+    }
+    return this.http.get<ResponseIClient>(this.urlPagination).pipe(
       tap(data => console.log('All: ' + 'get success')),
       catchError(this.handleError)
     );

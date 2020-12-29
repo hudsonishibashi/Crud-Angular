@@ -2,7 +2,7 @@ import { NotificationService } from './../notification.service';
 import { ClientService } from './../client/client.service';
 import { SaleService } from './sale.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { IResponseSale } from './sale';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -21,6 +21,12 @@ export class SaleComponent implements OnInit {
   clientId!: number;
   clientName!: string;
 
+  //Paginator
+  length!:number;
+  pageSize:number = 5;
+  pageIndex:number = 0;
+  offset: number = 0;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
@@ -33,12 +39,13 @@ export class SaleComponent implements OnInit {
   }
 
   getSale() {
-    this.saleService.getSale().subscribe({
+    this.saleService.getSale(this.pageIndex, this.pageSize).subscribe({
       next: sales => {
+        this.setPagination(sales['totalElements'], sales['number'], sales['size']);
         this.dataSource = new MatTableDataSource(sales.content);
         this.responseSale = sales
         this.previous = true;
-        this.dataSource.paginator = this.paginator;
+        //this.dataSource.paginator = this.paginator;
         sales.content.map(res => {
           this.getClientId(res.idClient).then(name => {
             res.clientName = name;
@@ -79,6 +86,18 @@ export class SaleComponent implements OnInit {
 
   deleteSale(id: any) {
     this.saleService.deleteSale(id).subscribe(res => {});
+  }
+
+  setPagination(length: number, startIndex: number, pageSize: number) {
+    this.length = length;
+    this.pageIndex = startIndex;
+    this.pageSize = pageSize;
+  }
+
+  onPaginateChange(event: PageEvent) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.getSale();
   }
 
 }

@@ -9,6 +9,7 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class SaleService {
   private url = 'http://localhost:8080/api/sale';
+  private urlPagination = '';
 /*
   httpOptions = {
     headers: new HttpHeaders({
@@ -18,8 +19,13 @@ export class SaleService {
 */
   constructor(private http: HttpClient) { }
 
-  getSale(): Observable<IResponseSale> {
-    return this.http.get<IResponseSale>(this.url).pipe(
+  getSale(page?: number, size?: number): Observable<IResponseSale> {
+    if ((page && size) != null) {
+      this.urlPagination = `${this.url}?page=${page}&size=${size}`;
+    } else {
+      this.urlPagination = this.url;
+    }
+    return this.http.get<IResponseSale>(this.urlPagination).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );

@@ -2,7 +2,7 @@ import { CategoryService } from './../category/category.service';
 import { NotificationService } from './../notification.service';
 import { ProductService } from './product.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { IResponseProduct } from './product';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -20,6 +20,12 @@ export class ProductComponent implements OnInit {
   previous: boolean = false;
   categoryName!: string;
 
+  //Paginator
+  length!:number;
+  pageSize:number = 5;
+  pageIndex:number = 0;
+  offset: number = 0;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
@@ -33,12 +39,13 @@ export class ProductComponent implements OnInit {
   }
 
   getProduct() {
-    this.productService.getProduct().subscribe({
+    this.productService.getProduct(this.pageIndex, this.pageSize).subscribe({
       next: product => {
+        this.setPagination(product['totalElements'], product['number'], product['size']);
         this.dataSource = new MatTableDataSource(product.content);
         this.responseProduct = product
         this.previous = true;
-        this.dataSource.paginator = this.paginator;
+        //this.dataSource.paginator = this.paginator;
         product.content.map(res => {
            this.getCategoryId(res.category).then(name => {
            res.categoryName = name;
@@ -79,6 +86,18 @@ export class ProductComponent implements OnInit {
 
   deleteProduct(id: any) {
     this.productService.deleteProduct(id).subscribe(res => {});
+  }
+
+  setPagination(length: number, startIndex: number, pageSize: number) {
+    this.length = length;
+    this.pageIndex = startIndex;
+    this.pageSize = pageSize;
+  }
+
+  onPaginateChange(event: PageEvent) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.getProduct();
   }
 
 }

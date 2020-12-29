@@ -3,7 +3,7 @@ import { ClientService } from './client.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { ResponseIClient } from './models/client';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-client',
@@ -18,17 +18,28 @@ export class ClientComponent implements OnInit {
   next: boolean = false;
   previous: boolean = false;
 
+  //Paginator
+  length!:number;
+  pageSize:number = 5;
+  pageIndex:number = 0;
+  offset: number = 0;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   
   constructor(private clientService: ClientService, private notifcation: NotificationService) { }
 
   ngOnInit(): void {
-    this.clientService.getClient().subscribe({
+    this.getClient();
+  }
+
+  getClient() {
+    this.clientService.getClient(this.pageIndex, this.pageSize).subscribe({
       next: clients => {
+        this.setPagination(clients['totalElements'], clients['number'], clients['size']);
         this.dataSource = new MatTableDataSource(clients.content);
         this.responseIClients = clients
         this.previous = true;
-        this.dataSource.paginator = this.paginator;
+        //this.dataSource.paginator = this.paginator;
       },
       error: err => this.erroMessage = err
     });
@@ -56,6 +67,18 @@ export class ClientComponent implements OnInit {
 
   deleteCliente(id: any) {
     this.clientService.deleteClient(id).subscribe(res => {});
+  }
+
+  setPagination(length: number, startIndex: number, pageSize: number) {
+    this.length = length;
+    this.pageIndex = startIndex;
+    this.pageSize = pageSize;
+  }
+
+  onPaginateChange(event: PageEvent) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.getClient();
   }
 
 }

@@ -1,7 +1,7 @@
 import { NotificationService } from './../notification.service';
 import { CategoryService } from './category.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ResponseICategory } from './category';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -18,6 +18,12 @@ export class CategoryComponent implements OnInit {
   next: boolean = false;
   previous: boolean = false;
 
+   //Paginator
+   length!:number;
+   pageSize:number = 5;
+   pageIndex:number = 0;
+   offset: number = 0;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private categoryService: CategoryService, private notification: NotificationService) { }
@@ -27,12 +33,13 @@ export class CategoryComponent implements OnInit {
   }
 
   getCategory() {
-    this.categoryService.getCategory().subscribe({
+    this.categoryService.getCategory(this.pageIndex, this.pageSize).subscribe({
       next: category => {
+        this.setPagination(category['totalElements'], category['number'], category['size']);
         this.dataSource = new MatTableDataSource(category.content);
         this.responseICategory = category
         this.previous = true;
-        this.dataSource.paginator = this.paginator;
+        //this.dataSource.paginator = this.paginator;
       },
       error: err => this.erroMessage = err
     });
@@ -59,6 +66,18 @@ export class CategoryComponent implements OnInit {
 
   deleteCategory(id: any) {
     this.categoryService.deleteCategory(id).subscribe(res => {});
+  }
+
+  setPagination(length: number, startIndex: number, pageSize: number) {
+    this.length = length;
+    this.pageIndex = startIndex;
+    this.pageSize = pageSize;
+  }
+
+  onPaginateChange(event: PageEvent) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.getCategory();
   }
 
 }

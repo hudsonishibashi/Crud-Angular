@@ -9,6 +9,7 @@ import { ResponseICategory, ICreateCategory, ICategory } from './category';
 })
 export class CategoryService {
   private url = 'http://localhost:8080/api/category';
+  private urlPagination = '';
 /*
   httpOptions = {
     headers: new HttpHeaders({
@@ -18,8 +19,13 @@ export class CategoryService {
 */
   constructor(private http: HttpClient) { }
 
-  getCategory(): Observable<ResponseICategory> {
-    return this.http.get<ResponseICategory>(this.url).pipe(
+  getCategory(page?: number, size?: number): Observable<ResponseICategory> {
+    if ((page && size) != null) {
+      this.urlPagination = `${this.url}?page=${page}&size=${size}`;
+    } else {
+      this.urlPagination = this.url;
+    }
+    return this.http.get<ResponseICategory>(this.urlPagination).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
