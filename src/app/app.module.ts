@@ -27,6 +27,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -62,6 +63,7 @@ import { LoginComponent } from './login/login.component';
     MatIconModule,
     MatBadgeModule,
     SharedModule,
+    MatTooltipModule,
     AppRoutingModule
   ],
   providers: [

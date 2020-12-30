@@ -61,3 +61,8 @@
   top: -20px;
   right: -22px;
 }
+
+::ng-deep .mat-tooltip {
+  background: brown;
+  color: white;
+}

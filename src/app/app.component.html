@@ -7,17 +7,17 @@
         <a mat-button [routerLink]="['/sale']"  routerLinkActive="active" *ngIf="currentViewMenu">Venda</a>
         <a mat-button [routerLink]="['/product']"  routerLinkActive="active" *ngIf="currentViewMenu">Produto</a>
         <a mat-button [routerLink]="['/category']"  routerLinkActive="active" *ngIf="currentViewMenu">Categoria</a>
-        <button mat-icon-button id="primary-button" routerLinkActive="active" *ngIf="!currentViewMenu" [routerLink]="['/cart']">
+        <button mat-icon-button id="primary-button" routerLinkActive="active" *ngIf="!currentViewMenu" [routerLink]="['/cart']" matTooltip="Meu carrinho">
           <mat-icon>shopping_cart</mat-icon>
         </button>
-        <button mat-icon-button id="secondary-button" routerLinkActive="active" *ngIf="!currentViewMenu" [routerLink]="['/history']">
+        <button mat-icon-button id="secondary-button" routerLinkActive="active" *ngIf="!currentViewMenu" [routerLink]="['/history']" matTooltip="Meu histórico">
           <mat-icon>history</mat-icon>
         </button>
-        <span id="user-display" *ngIf="currentViewMenu" [routerLink]="['/user']"> Olá, {{ userDisplayName | shortName }} </span>
+        <span id="user-display" *ngIf="currentViewMenu" [routerLink]="['/user']" matTooltip="Visualizar perfil"> Olá, {{ userDisplayName | shortName }} </span>
         <button mat-icon-button id="ultimate-button" *ngIf="currentViewMenu" (click)="openDialog()">
           <mat-icon>exit_to_app</mat-icon>
         </button>
-        <span id="common-user-display" *ngIf="!currentViewMenu" [routerLink]="['/user']"> Olá, {{ userDisplayName | shortName }} </span>
+        <span id="common-user-display" *ngIf="!currentViewMenu" [routerLink]="['/user']" matTooltip="Visualizar perfil"> Olá, {{ userDisplayName | shortName }} </span>
         <button mat-icon-button id="common-ultimate-button" *ngIf="!currentViewMenu" (click)="openDialog()">
           <mat-icon>exit_to_app</mat-icon>
         </button>
